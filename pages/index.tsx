@@ -14,15 +14,15 @@ import React, { useEffect, useState } from 'react'
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
 
-import TrillerBG from '../assets/trillerbg.png'
+import TrillerBG from '../assets/trillerbg2.png'
 import TrillerBG2 from '../assets/trillerbg2.png'
 import StartRecording from '../assets/startrecording.png'
 import DownloadNow from '../assets/downloadnow.png'
 import AppStore from '../assets/appstore.png'
 import PlayStore from '../assets/playstore.png'
 import MillionsOfSongs from '../assets/millionsofsong.png'
-import StepUpLogo1 from '../assets/stepuplogo1.png'
-import StepUpLogo2 from '../assets/stepuplogo2.png'
+import StepUpLogo1 from '../assets/trillerheader.png'
+// import StepUpLogo2 from '../assets/stepuplogo2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
 import BoostLogo from '../assets/logo-boost.png'
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   stepUp: {
-    paddingTop: '10vh',
+    paddingTop: '5vh',
     marginBottom: '-10vh',
     transform: 'translateX(3%)',
   },
@@ -69,11 +69,11 @@ const useStyles = makeStyles((theme) => ({
   contact: {
     paddingTop: '15vh',
     paddingBottom: '10vh',
-    backgroundImage: `url(${TrillerBG2})`,
-    backgroundSize: 'cover',
-    [theme.breakpoints.up('md')]: {
-      backgroundAttachment: 'fixed',
-    }
+    // backgroundImage: `url(${TrillerBG2})`,
+    // backgroundSize: 'cover',
+    // [theme.breakpoints.up('md')]: {
+    //   backgroundAttachment: 'fixed',
+    // }
   },
   prizeImg: {
     display: 'block',
@@ -181,24 +181,30 @@ export default () => {
     <div>
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
-          <Slide direction='right' in={slide1} timeout={500}>
-            <Typography variant='h4' style={{ fontWeight: 700 }}>
-              CALLING ALL ASPIRING ARTISTS!
-            </Typography>
-          </Slide>
-          <Slide direction='right' in={slide2} timeout={500}>
-            <Typography variant='h5' style={{ fontWeight: 300 }}>
-              Time for you to put it all on the line and...
-            </Typography>
-          </Slide>
-          <Grow in={logoShow} timeout={1000}>
-            <div>
-              <div className={classes.stepUpLogo}>
-                <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 1 : 0}}/>
-                <img className={classes.stepUpLogo2} src={StepUpLogo2} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 0 : 1}}/>
-              </div>
-            </div>
-          </Grow>
+          <div className={classes.stepUpLogo}>
+            <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
+          </div>
+
+          {
+            // <Slide direction='right' in={slide1} timeout={500}>
+            //   <Typography variant='h4' style={{ fontWeight: 700 }}>
+            //     CALLING ALL ASPIRING ARTISTS!
+            //   </Typography>
+            // </Slide>
+            // <Slide direction='right' in={slide2} timeout={500}>
+            //   <Typography variant='h5' style={{ fontWeight: 300 }}>
+            //     Time for you to put it all on the line and...
+            //   </Typography>
+            // </Slide>
+            // <Grow in={logoShow} timeout={1000}>
+            //   <div>
+            //     <div className={classes.stepUpLogo}>
+            //       <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 1 : 0}}/>
+            //       <img className={classes.stepUpLogo2} src={StepUpLogo2} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 0 : 1}}/>
+            //     </div>
+            //   </div>
+            // </Grow>
+          }
         </Container>
         <div className={classes.contact}>
           <Container maxWidth='lg'>
