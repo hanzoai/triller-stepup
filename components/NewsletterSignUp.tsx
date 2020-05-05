@@ -150,7 +150,7 @@ export default ({ ...props }) => {
         </>
         : <Grid item xs={12}>
           <Typography variant='h6' paragraph align='center' color='textPrimary'>
-            You have been added to our mailing list.
+            You are now signed up for alerts.
           </Typography>
         </Grid>
       }
