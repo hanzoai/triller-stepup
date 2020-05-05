@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     backgroundImage: `url(${TrillerBG})`,
     backgroundSize: 'cover',
+
+    [theme.breakpoints.up('md')]: {
+      backgroundAttachment: 'fixed',
+    }
   },
   stepUp: {
     paddingTop: '10vh',
@@ -67,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '10vh',
     backgroundImage: `url(${TrillerBG2})`,
     backgroundSize: 'cover',
+    [theme.breakpoints.up('md')]: {
+      backgroundAttachment: 'fixed',
+    }
   },
   prizeImg: {
     display: 'block',
