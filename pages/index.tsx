@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   stepUp: {
-    paddingTop: '20vh',
+    paddingTop: '15vh',
     marginBottom: '-10vh',
     transform: 'translateX(3%)',
   },
