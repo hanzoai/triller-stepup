@@ -1,5 +1,6 @@
 import {
   Container,
+  Fade,
   Grid,
   Grow,
   Link,
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   stepUp: {
-    paddingTop: '5vh',
+    paddingTop: '20vh',
     marginBottom: '-10vh',
     transform: 'translateX(3%)',
   },
@@ -47,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    marginTop: '0',
+    marginTop: '-20vh',
 
     [theme.breakpoints.down('sm')]: {
-      marginTop: '5vh',
+      marginTop: '-10vh',
     }
   },
   stepUpLogo1: {
@@ -150,7 +151,6 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const classes = useStyles()
 
-  const [logoFrame, setLogoFrame] = useState(true)
   const [logoShow, setLogoShow] = useState(false)
   const [slide1, setSlide1] = useState(false)
   const [slide2, setSlide2] = useState(false)
@@ -167,44 +167,35 @@ export default () => {
     setTimeout(() => {
       setLogoShow(true)
     }, 1600)
-
-    const logoInterval = setInterval(() => {
-      setLogoFrame((frame) => !frame)
-    }, 1000)
-
-    return () => {
-      clearInterval(logoInterval)
-    }
   }, [])
 
   return (
     <div>
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
-          <div className={classes.stepUpLogo}>
-            <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
-          </div>
-
-          {
-            // <Slide direction='right' in={slide1} timeout={500}>
-            //   <Typography variant='h4' style={{ fontWeight: 700 }}>
-            //     CALLING ALL ASPIRING ARTISTS!
-            //   </Typography>
-            // </Slide>
-            // <Slide direction='right' in={slide2} timeout={500}>
-            //   <Typography variant='h5' style={{ fontWeight: 300 }}>
-            //     Time for you to put it all on the line and...
-            //   </Typography>
-            // </Slide>
-            // <Grow in={logoShow} timeout={1000}>
-            //   <div>
-            //     <div className={classes.stepUpLogo}>
-            //       <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 1 : 0}}/>
-            //       <img className={classes.stepUpLogo2} src={StepUpLogo2} alt='StepUp To The Mic!' style={{ opacity: logoFrame ? 0 : 1}}/>
-            //     </div>
-            //   </div>
-            // </Grow>
-          }
+          <Fade in={slide1} timeout={800}>
+            <div>
+              <Slide direction='right' in={slide1} timeout={500}>
+                <Typography variant='h4' style={{ fontWeight: 700 }}>
+                  CALLING ALL ASPIRING ARTISTS!
+                </Typography>
+              </Slide>
+            </div>
+          </Fade>
+          <Fade in={slide2} timeout={800}>
+            <div>
+              <Slide direction='right' in={slide2} timeout={500}>
+                <Typography variant='h5' style={{ fontWeight: 300 }}>
+                  Time for you to put it all on the line and...
+                </Typography>
+              </Slide>
+            </div>
+          </Fade>
+          <Grow in={logoShow} timeout={1000}>
+            <div className={classes.stepUpLogo}>
+              <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
+            </div>
+          </Grow>
         </Container>
         <div className={classes.contact}>
           <Container maxWidth='lg'>
