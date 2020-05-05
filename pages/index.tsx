@@ -258,7 +258,7 @@ export default () => {
           </Container>
         </div>
       </div>
-      <iframe src='https://triller.co' className={classes.iframe}/>
+      { /* <iframe src='https://triller.co' className={classes.iframe}/> */ }
     </div>
   )
 }
