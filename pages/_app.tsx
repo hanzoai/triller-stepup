@@ -4,11 +4,7 @@ import {
   Typography,
 } from '@material-ui/core'
 
-import { ThemeProvider } from '@material-ui/core/styles'
-
-import {
-  makeStyles,
-} from '@material-ui/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 
 import App from 'next/app'
 import Head from 'next/head'
