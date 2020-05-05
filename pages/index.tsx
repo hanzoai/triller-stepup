@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    marginTop: '-25vh',
+    marginTop: '0',
 
     [theme.breakpoints.down('sm')]: {
       marginTop: '5vh',

@@ -74,6 +74,7 @@
   left: 0;
   width: 100%;
   text-align: center;
+  backface-visibility: hidden;
 }
 .card .f {
   position: absolute;
@@ -119,6 +120,7 @@
   border-radius: 0.06em 0.06em 0 0;
   border: 0.01em solid #000;
   box-sizing: border-box;
+  backface-visibility: hidden;
 }
 .card .f .a-2 .qian {
   position: absolute;
