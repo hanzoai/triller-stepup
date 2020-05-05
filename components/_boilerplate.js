@@ -5,7 +5,7 @@ import {
 
 import {
   makeStyles,
-} from '@material-ui/styles'
+} from '@material-ui/core/styles'
 
 import classnames from 'classnames'
 

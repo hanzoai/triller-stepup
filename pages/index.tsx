@@ -4,6 +4,7 @@ import {
   Grow,
   Link,
   Typography,
+  Slide,
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
   },
   stepUp: {
-    paddingTop: '22vh',
+    paddingTop: '10vh',
     marginBottom: '-10vh',
     transform: 'translateX(3%)',
   },
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
+    marginTop: '-25vh',
   },
   stepUpLogo1: {
     display: 'block',
@@ -139,11 +141,21 @@ export default () => {
 
   const [logoFrame, setLogoFrame] = useState(true)
   const [logoShow, setLogoShow] = useState(false)
+  const [slide1, setSlide1] = useState(false)
+  const [slide2, setSlide2] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
+      setSlide1(true)
+    }, 600)
+
+    setTimeout(() => {
+      setSlide2(true)
+    }, 1200)
+
+    setTimeout(() => {
       setLogoShow(true)
-    }, 500)
+    }, 1800)
 
     const logoInterval = setInterval(() => {
       setLogoFrame((frame) => !frame)
@@ -158,6 +170,16 @@ export default () => {
     <div>
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
+          <Slide direction='right' in={slide1} timeout={500}>
+            <Typography variant='h4'>
+              CALLING ALL ASPIRING ARTISTS!
+            </Typography>
+          </Slide>
+          <Slide direction='right' in={slide2} timeout={500}>
+            <Typography variant='h5'>
+              Time for you to put it all on the line and...
+            </Typography>
+          </Slide>
           <Grow in={logoShow} timeout={1000}>
             <div>
               <div className={classes.stepUpLogo}>
