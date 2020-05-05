@@ -44,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     position: 'relative',
     marginTop: '-25vh',
+
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '5vh',
+    }
   },
   stepUpLogo1: {
     display: 'block',

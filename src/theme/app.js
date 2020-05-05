@@ -59,14 +59,15 @@ const theme = createMuiTheme({
 // }
 
 // theme.typography.h3 = {
+//   fontSize: '1.75rem',
 //   fontWeight: 300,
 //   lineHeight: '4rem',
 // }
 
 // theme.typography.h5 = {
-//   fontSize: '.8rem',
+//   fontSize: '1rem',
 //   [theme.breakpoints.up('md')]: {
-//     fontSize: '1.5rem',
+//     fontSize: '1rem',
 //   },
 // }
 

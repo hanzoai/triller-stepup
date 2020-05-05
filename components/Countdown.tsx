@@ -12,7 +12,8 @@ const TOTAL_SECONDS = COUNTDOWN_TARGET.diff(moment()) / 1000
 const useStyles = makeStyles((theme) => ({
   countdown: {
     textAlign: 'center',
-    padding: theme.spacing(4),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
 }))
 

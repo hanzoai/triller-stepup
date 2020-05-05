@@ -44,12 +44,12 @@ export default function(props) {
 
     return (
       <div className={styles.separator} style={sc}>
-        {oldVal}
+        &nbsp;
       </div>
     );
   }
   const ba = {
-    border: `.01em solid ${style.background}`,
+    border: 0,
   };
   if (style && style.background) {
     ba.background = style.background;
@@ -76,8 +76,6 @@ export default function(props) {
           <div className={styles.qian}>{oldVal}</div>
         </div>
       </div>
-      <div className={styles.before} style={ba} />
-      <div className={styles.after} style={ba} />
     </div>
   );
 }
