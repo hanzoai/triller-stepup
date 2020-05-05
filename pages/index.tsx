@@ -171,7 +171,7 @@ export default () => {
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
           <Slide direction='right' in={slide1} timeout={500}>
-            <Typography variant='h4' style={{ fontWeight: 600 }}>
+            <Typography variant='h4' style={{ fontWeight: 700 }}>
               CALLING ALL ASPIRING ARTISTS!
             </Typography>
           </Slide>

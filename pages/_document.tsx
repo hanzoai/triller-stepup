@@ -56,7 +56,7 @@ export default class MyDocument extends Document {
             Download their file and extract it into 'public/icons'
             You do not need to change the icon names, they will auto import appropriately
           */}
-          <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'/>
+          <link rel='stylesheet' href='/fonts/fonts.css' />
           <link rel='icon' href='/favicon.ico' />
           <link rel='manifest' href='/manifest.json' />
           <meta property='description' content={OG.DESCRIPTION} />

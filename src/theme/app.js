@@ -23,11 +23,10 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
-      'Lato',
+      'ProximaNova',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
       '"Helvetica Neue"',
       'Arial',
       'sans-serif',
