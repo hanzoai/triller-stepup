@@ -103,13 +103,13 @@ const useStyles = makeStyles((theme) => ({
   appStoreImg: {
     display: 'block',
     marginLeft: 'auto',
-    maxWidth: 400,
+    maxWidth: 200,
     width: '100%',
   },
   playStoreImg: {
     display: 'block',
     marginRight: 'auto',
-    maxWidth: 400,
+    maxWidth: 200,
     width: '100%',
   },
   millions: {
