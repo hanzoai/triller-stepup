@@ -62,7 +62,7 @@ export default () => {
             color: theme.palette.primary.main,
             background: 'white'
           },
-          standard: isBelowMD ? '12vw': '100px',
+          standard: isBelowMD ? '12vw': '60px',
         }}
       />
     </div>
