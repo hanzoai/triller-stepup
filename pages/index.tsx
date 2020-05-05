@@ -205,7 +205,7 @@ export default () => {
             <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
               <br />
               <Typography variant='h3' align='center'>
-                Contest Launches In
+                Contest Launches
               </Typography>
             <Countdown/>
             <Grid container alignItems='center' spacing={4}>
