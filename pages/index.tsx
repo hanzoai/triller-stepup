@@ -147,15 +147,15 @@ export default () => {
   useEffect(() => {
     setTimeout(() => {
       setSlide1(true)
-    }, 600)
+    }, 200)
 
     setTimeout(() => {
       setSlide2(true)
-    }, 1200)
+    }, 800)
 
     setTimeout(() => {
       setLogoShow(true)
-    }, 1800)
+    }, 1600)
 
     const logoInterval = setInterval(() => {
       setLogoFrame((frame) => !frame)
@@ -171,12 +171,12 @@ export default () => {
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
           <Slide direction='right' in={slide1} timeout={500}>
-            <Typography variant='h4'>
+            <Typography variant='h4' style={{ fontWeight: 600 }}>
               CALLING ALL ASPIRING ARTISTS!
             </Typography>
           </Slide>
           <Slide direction='right' in={slide2} timeout={500}>
-            <Typography variant='h5'>
+            <Typography variant='h5' style={{ fontWeight: 300 }}>
               Time for you to put it all on the line and...
             </Typography>
           </Slide>

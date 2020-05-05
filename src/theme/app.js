@@ -23,6 +23,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
+      'Lato',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
