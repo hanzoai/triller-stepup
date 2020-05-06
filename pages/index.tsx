@@ -15,14 +15,14 @@ import React, { useEffect, useState } from 'react'
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
 
-import TrillerBG from '../assets/trillerbg2.png'
+import TrillerBG from '../assets/trillerbg4.png'
 import TrillerBG2 from '../assets/trillerbg2.png'
 import StartRecording from '../assets/startrecording.png'
 import DownloadNow from '../assets/downloadnow.png'
 import AppStore from '../assets/appstore.png'
 import PlayStore from '../assets/playstore.png'
 import MillionsOfSongs from '../assets/millionsofsong.png'
-import StepUpLogo1 from '../assets/trillerheader.png'
+import StepUpLogo1 from '../assets/trillerheader2.png'
 // import StepUpLogo2 from '../assets/stepuplogo2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
@@ -146,6 +146,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 200,
     width: '100%',
   },
+  auditions: {
+    marginTop: theme.spacing(2),
+    fontWeight: 700,
+  },
 }))
 
 export default () => {
@@ -201,8 +205,8 @@ export default () => {
           <Container maxWidth='lg'>
             <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
               <br />
-              <Typography variant='h3' align='center'>
-                Contest Launches
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                AUDTIONS OPEN 5/8
               </Typography>
             <Countdown/>
             <Grid container alignItems='center' spacing={4}>
