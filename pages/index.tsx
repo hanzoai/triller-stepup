@@ -314,7 +314,9 @@ export default () => {
                 <strong>STARRAH</strong>
               </Typography>
               <Typography variant='h6' align='center'>
-                She has written 14 singles thus far that have reached the Top 20 on Billboard Hot 100.
+                Starrah has written 14 singles that have reached the Top 20 on the
+                Billboard Hot 100;  two of which went No. 1 (“Havana” by Camila
+                Cabello and “Girls Like You” by Maroon 5) and five peaking in the top 10.
               </Typography>
             </Grid>
             <Grid item xs={6} md={3}>
@@ -324,7 +326,7 @@ export default () => {
                 <strong>MURDA BEATZ</strong>
               </Typography>
               <Typography variant='h6' align='center'>
-                Canadian record producer, DJ, and songwriter.
+                Murda Beatz has produced numerous hit singles for top rappers including Travis Scott, Gucci Mane, Drake, Migos, and 6ix9ine, alongside frequent collaborators Cubeatz.
               </Typography>
             </Grid>
             <Grid item xs={6} md={3}>
@@ -334,7 +336,7 @@ export default () => {
                 <strong>QUAVO</strong>
               </Typography>
               <Typography variant='h6' align='center'>
-                Quavo has been featured on four singles within the top 10 of the Billboard Hot 100.
+                Quavo is a rapper, singer, songwriter, and record producer, best known as a member of Migos and has numerous hits that have made the top 10 of the Billboard Hot 100 with Migos and other collaborations.
               </Typography>
             </Grid>
             <Grid item xs={6} md={3}>
@@ -344,7 +346,7 @@ export default () => {
                 <strong>TAKEOFF</strong>
               </Typography>
               <Typography variant='h6' align='center'>
-                Two albums debuting at #1 on the Billboard Hot 100.
+                Takeoff is a rapper, singer, and songwriter with several top 10 singles to his name as a member of Migos.
               </Typography>
             </Grid>
           </Grid>
