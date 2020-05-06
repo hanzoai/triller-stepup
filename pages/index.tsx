@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   footer: {
-
+    paddingBottom: '10vh',
   },
   footerLogo: {
     display: 'block',
@@ -213,9 +213,17 @@ const useStyles = makeStyles((theme) => ({
   },
   socialButtons: {
     textAlign: 'left',
+
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+    }
   },
   downloadButtons: {
     textAlign: 'right',
+
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+    }
   },
 }))
 
