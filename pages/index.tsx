@@ -66,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-10vh',
     marginBottom: -100,
 
-    // [theme.breakpoints.down('sm')]: {
-    //   marginTop: '-10vh',
-    // }
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '-5vh',
+    }
   },
   stepUpLogo1: {
     display: 'block',
