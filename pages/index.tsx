@@ -370,7 +370,7 @@ export default () => {
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
-                  Record an original hit song written by Starrah & produced by Murda Beatz
+                  Record an original hit song written by Starrah, produced by Murda Beatz, featuring Quavo and Takeoff
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
