@@ -21,18 +21,25 @@ import StartRecording from '../assets/startrecording.png'
 import DownloadNow from '../assets/downloadnow.png'
 import AppStore from '../assets/appstore.png'
 import PlayStore from '../assets/playstore.png'
-import MillionsOfSongs from '../assets/millionsofsong.png'
 import StepUpLogo1 from '../assets/trillerheader2.png'
 // import StepUpLogo2 from '../assets/stepuplogo2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
 import BoostLogo from '../assets/logo-boost.png'
+import GrandPrizes from '../assets/grandprizes.png'
+import Record from '../assets/record.png'
+import Judges from '../assets/judges.png'
+
+import JudgeStarrah from '../assets/judges/starrah.png'
+import JudgeMurda from '../assets/judges/murda.png'
+import JudgeQuavo from '../assets/judges/quavo.png'
+import JudgeTakeoff from '../assets/judges/takeoff.png'
 
 const useStyles = makeStyles((theme) => ({
   body: {
     minHeight: '100vh',
     backgroundImage: `url(${TrillerBG})`,
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
 
     [theme.breakpoints.up('md')]: {
       backgroundAttachment: 'fixed',
@@ -113,22 +120,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 200,
     width: '100%',
   },
-  millions: {
-    paddingTop: '5vh',
-    paddingBottom: '5vh',
-    background: '#000',
-  },
-  millionsOfSongsImg: {
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '100%',
-  },
-  iframe: {
-    border: 0,
-    width: '100vw',
-    height: '100vh',
-  },
   newsletter: {
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -150,6 +141,46 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     fontWeight: 700,
   },
+  grandprizes: {
+    paddingTop: '5vh',
+    paddingBottom: '5vh',
+  },
+  grandprizesImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 700,
+    width: '100%',
+  },
+  recordImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 80,
+    width: '100%',
+  },
+  recordPoints: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  judges: {
+    paddingTop: '5vh',
+    paddingBottom: '15vh',
+  },
+  judgesImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 1000,
+    width: '100%',
+    marginBottom: theme.spacing(4),
+  },
+  judgeImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+  },
 }))
 
 export default () => {
@@ -170,7 +201,7 @@ export default () => {
 
     setTimeout(() => {
       setLogoShow(true)
-    }, 1600)
+    }, 1400)
   }, [])
 
   return (
@@ -247,13 +278,113 @@ export default () => {
             </Grid>
           </Grid>
         </Container>
-        <div className={classes.millions}>
-          <Container maxWidth='lg'>
-            <img className={classes.millionsOfSongsImg} src={MillionsOfSongs} alt='MillionsOfSongs'/>
+        <Container className={classes.grandprizes} maxWidth='lg'>
+          <Grid container alignItems='center' spacing={8}>
+            <Grid item xs={12}>
+              <img className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
+            </Grid>
+          </Grid>
+          <Container className={classes.recordPoints} maxWidth='sm'>
+            <Grid container alignItems='center' spacing={4}>
+              <Grid item sm={2} xs={3}>
+                <img className={classes.recordImg} src={Record} alt='Record'/>
+              </Grid>
+              <Grid item sm={10} xs={9}>
+                <Typography variant='h4' align='left'>
+                  Up to a one-year record label & management deal
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <img className={classes.recordImg} src={Record} alt='Record'/>
+              </Grid>
+              <Grid item sm={10} xs={9}>
+                <Typography variant='h4' align='left'>
+                  Record an original hit song written by Starrah & produced by Murda Beatz
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <img className={classes.recordImg} src={Record} alt='Record'/>
+              </Grid>
+              <Grid item sm={10} xs={9}>
+                <Typography variant='h4' align='left'>
+                  Shoot a professional music video
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <img className={classes.recordImg} src={Record} alt='Record'/>
+              </Grid>
+              <Grid item sm={10} xs={9}>
+                <Typography variant='h4' align='left'>
+                  Opportunity to place in U.S. Top 100 charts
+                </Typography>
+              </Grid>
+              <Grid item sm={2} xs={3}>
+                <img className={classes.recordImg} src={Record} alt='Record'/>
+              </Grid>
+              <Grid item sm={10} xs={9}>
+                <Typography variant='h4' align='left'>
+                  A free Boost Mobile smartphone & free year of service
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant='body2' align='left'>
+                  * Legal Disclaimer: NO PURCHASE NECESSARY. Open to legal
+                  residents of the 50 legal states & D.C. contestant must be
+                  18 years or older at time or older at time of entry.
+                  Void where prohibited. Sponsors Boost Mobile & Triller.
+                </Typography>
+              </Grid>
+            </Grid>
           </Container>
-        </div>
+        </Container>
+        <Container className={classes.judges} maxWidth='lg'>
+          <Grid container alignItems='flex-start' spacing={4}>
+            <Grid item md={12}>
+              <img className={classes.judgesImg} src={Judges} alt='Meet Your Hosts And Judges'/>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>STARRAH</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                She has written 14 singles thus far that have reached the Top 20 on Billboard Hot 100.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>MURDA BEATZ</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Canadian record producer, DJ, and songwriter.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>QUAVO</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Quavo has been featured on four singles within the top 10 of the Billboard Hot 100.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>TAKEOFF</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Two albums debuting at #1 on the Billboard Hot 100.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Container>
       </div>
-      { /* <iframe src='https://triller.co' className={classes.iframe}/> */ }
     </div>
   )
 }
