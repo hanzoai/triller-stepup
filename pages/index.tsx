@@ -3,6 +3,7 @@ import {
   Fade,
   Grid,
   Grow,
+  IconButton,
   Link,
   Typography,
   Slide,
@@ -11,6 +12,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 
 import React, { useEffect, useState } from 'react'
+import HTMLComment from 'react-html-comment'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -35,6 +37,13 @@ import JudgeMurda from '../assets/judges/murda.png'
 import JudgeQuavo from '../assets/judges/quavo.png'
 import JudgeTakeoff from '../assets/judges/takeoff.png'
 
+import Facebook from '../assets/social/facebook.png'
+import Twitter from '../assets/social/twitter.svg'
+import Instagram from '../assets/social/instagram.svg'
+import Youtube from '../assets/social/youtube.png'
+import Apple from '../assets/social/apple.png'
+import Google from '../assets/social/google.png'
+
 const useStyles = makeStyles((theme) => ({
   body: {
     minHeight: '100vh',
@@ -46,20 +55,20 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   stepUp: {
-    paddingTop: '15vh',
-    marginBottom: '-10vh',
-    transform: 'translateX(3%)',
+    paddingTop: '5vh',
+    marginBottom: '5vh',
   },
   stepUpLogo: {
     display: 'table',
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    marginTop: '-20vh',
+    marginTop: '-10vh',
+    marginBottom: -100,
 
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '-10vh',
-    }
+    // [theme.breakpoints.down('sm')]: {
+    //   marginTop: '-10vh',
+    // }
   },
   stepUpLogo1: {
     display: 'block',
@@ -75,8 +84,8 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
   },
   contact: {
-    paddingTop: '15vh',
-    paddingBottom: '10vh',
+    paddingTop: '5vh',
+    paddingBottom: '15vh',
     // backgroundImage: `url(${TrillerBG2})`,
     // backgroundSize: 'cover',
     // [theme.breakpoints.up('md')]: {
@@ -181,6 +190,33 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     width: '100%',
   },
+  footer: {
+
+  },
+  footerLogo: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    height: 100,
+    marginTop: 30,
+    marginBottom: 30,
+  },
+  footerIcon: {
+    height: 30,
+  },
+  wideFooterIcon: {
+    width: 30,
+  },
+  footerButton: {
+    border: '1px solid #fff',
+    margin: 4,
+  },
+  socialButtons: {
+    textAlign: 'left',
+  },
+  downloadButtons: {
+    textAlign: 'right',
+  },
 }))
 
 export default () => {
@@ -208,57 +244,36 @@ export default () => {
     <div>
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
-          <Fade in={slide1} timeout={800}>
-            <div>
-              <Slide direction='right' in={slide1} timeout={500}>
-                <Typography variant='h4' style={{ fontWeight: 700 }}>
-                  CALLING ALL ASPIRING ARTISTS!
-                </Typography>
-              </Slide>
-            </div>
-          </Fade>
-          <Fade in={slide2} timeout={800}>
-            <div>
-              <Slide direction='right' in={slide2} timeout={500}>
-                <Typography variant='h5' style={{ fontWeight: 300 }}>
-                  Time for you to put it all on the line and...
-                </Typography>
-              </Slide>
-            </div>
-          </Fade>
-          <Grow in={logoShow} timeout={1000}>
-            <div className={classes.stepUpLogo}>
-              <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
-            </div>
-          </Grow>
+          <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
+          {
+            // <Fade in={slide1} timeout={800}>
+            //   <div>
+            //     <Slide direction='right' in={slide1} timeout={500}>
+            //       <Typography variant='h4' style={{ fontWeight: 700 }}>
+            //         CALLING ALL ASPIRING ARTISTS!
+            //       </Typography>
+            //     </Slide>
+            //   </div>
+            // </Fade>
+            // <Fade in={slide2} timeout={800}>
+            //   <div>
+            //     <Slide direction='right' in={slide2} timeout={500}>
+            //       <Typography variant='h5' style={{ fontWeight: 300 }}>
+            //         Time for you to put it all on the line and...
+            //       </Typography>
+            //     </Slide>
+            //   </div>
+            // </Fade>
+          }
+          <div className={classes.stepUpLogo}>
+            <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
+          </div>
         </Container>
-        <div className={classes.contact}>
-          <Container maxWidth='lg'>
-            <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
-              <br />
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                AUDTIONS OPEN 5/8
-              </Typography>
-            <Countdown/>
-            <Grid container alignItems='center' spacing={4}>
-              <Grid item xs={12}>
-                <Typography variant='h4' align='center'>
-                  Sign up now for alerts
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <NewsletterSignUp className={classes.newsletter}/>
-              </Grid>
-              <Grid item xs={6}>
-                <img className={classes.trillerLogo} src={TrillerLogo} alt='Sponsored By Triller'/>
-              </Grid>
-              <Grid item xs={6}>
-                <img className={classes.boostLogo} src={BoostLogo} alt='Sponsored By Boost Mobile'/>
-              </Grid>
-            </Grid>
-          </Container>
-        </div>
         <Container className={classes.apps} maxWidth='lg'>
+          <Typography variant='h3' align='center' className={classes.auditions}>
+            AUDITIONS OPEN 5/8
+          </Typography>
+          <Countdown/>
           <Grid container alignItems='center' spacing={4}>
             <Grid item xs={12}>
               <img className={classes.recordingImg} src={StartRecording} alt='Start Recording Your Practice Submissions'/>
@@ -275,6 +290,53 @@ export default () => {
               <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
                 <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
+            </Grid>
+          </Grid>
+        </Container>
+        <Container className={classes.judges} maxWidth='lg'>
+          <Grid container alignItems='flex-start' spacing={4}>
+            <Grid item md={12}>
+              <img className={classes.judgesImg} src={Judges} alt='Meet Your Hosts And Judges'/>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>STARRAH</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                She has written 14 singles thus far that have reached the Top 20 on Billboard Hot 100.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>MURDA BEATZ</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Canadian record producer, DJ, and songwriter.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>QUAVO</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Quavo has been featured on four singles within the top 10 of the Billboard Hot 100.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} md={3}>
+              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>TAKEOFF</strong>
+              </Typography>
+              <Typography variant='h6' align='center'>
+                Two albums debuting at #1 on the Billboard Hot 100.
+              </Typography>
             </Grid>
           </Grid>
         </Container>
@@ -337,50 +399,66 @@ export default () => {
             </Grid>
           </Container>
         </Container>
-        <Container className={classes.judges} maxWidth='lg'>
-          <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item md={12}>
-              <img className={classes.judgesImg} src={Judges} alt='Meet Your Hosts And Judges'/>
+        <div className={classes.contact}>
+          <Container maxWidth='lg'>
+            <Grid container alignItems='center' spacing={4}>
+              <Grid item xs={12}>
+                <Typography variant='h4' align='center'>
+                  Sign up now for alerts
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <NewsletterSignUp className={classes.newsletter}/>
+              </Grid>
             </Grid>
-            <Grid item xs={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
-              <br />
-              <Typography variant='h4' align='center'>
-                <strong>STARRAH</strong>
-              </Typography>
-              <Typography variant='h6' align='center'>
-                She has written 14 singles thus far that have reached the Top 20 on Billboard Hot 100.
-              </Typography>
+          </Container>
+        </div>
+        <Container className={classes.footer} maxWidth='md'>
+          <Grid container alignItems='center' spacing={4}>
+            <Grid item xs={12} sm={4} className={classes.socialButtons}>
+              <Link href='https://www.facebook.com/trillervidsapp/' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.footerIcon} src={Facebook} alt='Follow us on Facebook'/>
+                  <HTMLComment text='By Raj Dev from freeicons.co'/>
+                </IconButton>
+              </Link>
+              <Link href='https://www.twitter.com/triller' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.footerIcon} src={Twitter} alt='Follow us on Twitter'/>
+                  <HTMLComment text='By Icons8'/>
+                </IconButton>
+              </Link>
+              <Link href='https://www.instagram.com/trillervids/' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.footerIcon} src={Instagram} alt='Follow us on Instagram'/>
+                  <HTMLComment text='By Iconfinder'/>
+                </IconButton>
+              </Link>
+              <Link href='https://www.youtube.com/channel/UCOVQQTFALLID0EyoBMHaCsg' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.wideFooterIcon} src={Youtube} alt='Follow us on Youtube'/>
+                </IconButton>
+              </Link>
             </Grid>
-            <Grid item xs={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
-              <br />
-              <Typography variant='h4' align='center'>
-                <strong>MURDA BEATZ</strong>
-              </Typography>
-              <Typography variant='h6' align='center'>
-                Canadian record producer, DJ, and songwriter.
-              </Typography>
+            <Grid item xs={12} sm={4}>
+              <Link href='https://triller.co'>
+                <img className={classes.footerLogo} src={TrillerLogo} alt='Triller'/>
+              </Link>
             </Grid>
-            <Grid item xs={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
-              <br />
-              <Typography variant='h4' align='center'>
-                <strong>QUAVO</strong>
+            <Grid item xs={12} sm={4} className={classes.downloadButtons}>
+              <Typography variant='body1' style={{ display: 'inline-block', marginRight: 20 }}>
+                <strong>Download</strong>
               </Typography>
-              <Typography variant='h6' align='center'>
-                Quavo has been featured on four singles within the top 10 of the Billboard Hot 100.
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
-              <br />
-              <Typography variant='h4' align='center'>
-                <strong>TAKEOFF</strong>
-              </Typography>
-              <Typography variant='h6' align='center'>
-                Two albums debuting at #1 on the Billboard Hot 100.
-              </Typography>
+              <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.footerIcon} src={Apple} alt='Download at the Apple App Store'/>
+                </IconButton>
+              </Link>
+              <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' target='_blank'>
+                <IconButton className={classes.footerButton}>
+                  <img className={classes.footerIcon} src={Google} alt='Download at the Goople Play Store'/>
+                </IconButton>
+              </Link>
             </Grid>
           </Grid>
         </Container>

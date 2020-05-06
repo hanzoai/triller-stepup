@@ -144,7 +144,7 @@ export default ({ ...props }) => {
               fullWidth
               onClick={submit}
             >
-              Get Newsletter
+              Get Alerts
             </Button>
           </Grid>
         </>
