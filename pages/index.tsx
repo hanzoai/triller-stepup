@@ -17,7 +17,7 @@ import HTMLComment from 'react-html-comment'
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
 
-import TrillerBG from '../assets/trillerbg4.png'
+import TrillerBG from '../assets/trillerbg4.jpg'
 import TrillerBG2 from '../assets/trillerbg2.png'
 import StartRecording from '../assets/startrecording.png'
 import DownloadNow from '../assets/downloadnow.png'
@@ -63,11 +63,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    marginTop: '-10vh',
+    marginTop: '-15vh',
     marginBottom: -100,
 
     [theme.breakpoints.down('sm')]: {
-      marginTop: '-5vh',
+      marginTop: '-10vh',
+      marginBottom: -30,
     }
   },
   stepUpLogo1: {
@@ -100,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   apps: {
-    paddingTop: '5vh',
+    paddingTop: '0vh',
     paddingBottom: '10vh',
   },
   recordingImg: {
@@ -114,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 900,
+    maxWidth: 400,
     width: '100%',
   },
   appStoreImg: {
@@ -252,6 +253,9 @@ export default () => {
     <div>
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
+          <div className={classes.stepUpLogo}>
+            <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
+          </div>
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           {
             // <Fade in={slide1} timeout={800}>
@@ -273,9 +277,6 @@ export default () => {
             //   </div>
             // </Fade>
           }
-          <div className={classes.stepUpLogo}>
-            <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
-          </div>
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
           <Typography variant='h3' align='center' className={classes.auditions}>

@@ -73,6 +73,12 @@ export default class MyDocument extends Document {
           <meta name='twitter:card' content={TWITTER.CARD} />
           {/* PWA primary color */}
           <meta name='theme-color' content={theme.palette.primary.main} />
+          <style dangerouslySetInnerHTML={{__html: `
+            body: {
+              width: 100vw;
+              overflow-x: hidden;
+            },
+          `}}/>
         </Head>
         <body>
           <main id='main' style={{ background: 'rgb(23, 27, 29)' }}>
