@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   stepUp: {
-    paddingTop: '5vh',
+    paddingTop: '0vh',
     marginBottom: '5vh',
   },
   stepUpLogo: {
