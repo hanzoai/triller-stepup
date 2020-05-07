@@ -34,6 +34,7 @@ import StepUpLogo1 from '../assets/trillerheader2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
 // import BoostLogo from '../assets/logo-boost.png'
+import CallingAllArtists from '../assets/calingallartists.png'
 import GrandPrizes from '../assets/grandprizes.png'
 import Record from '../assets/record.png'
 import Judges from '../assets/judges.png'
@@ -178,6 +179,13 @@ const useStyles = makeStyles((theme) => ({
   auditions: {
     marginTop: theme.spacing(2),
     fontWeight: 700,
+  },
+  callAllArtistImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 1200,
+    width: '100%',
   },
   grandprizes: {
     paddingTop: '5vh',
@@ -431,10 +439,10 @@ export default () => {
           </Grid>
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
-          <Typography variant='h3' align='center' className={classes.auditions}>
-            CALLING ALL ASPIRING ARTISTS
-          </Typography>
           <Grid container alignItems='center' spacing={4}>
+            <Grid item xs={12}>
+              <img className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
+            </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 HOW TO AUDITION
