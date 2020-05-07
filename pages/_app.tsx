@@ -93,6 +93,8 @@ const useStyles = makeStyles((theme) => ({
   consent: {
     '& button': {
       marginRight: '100px !important',
+      backgroundColor: '#E81A7B !important',
+      color: '#FFF !important',
     },
   },
   footer: {

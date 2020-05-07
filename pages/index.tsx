@@ -32,10 +32,10 @@ import GrandPrizes from '../assets/grandprizes.png'
 import Record from '../assets/record.png'
 import Judges from '../assets/judges.png'
 
-import JudgeStarrah from '../assets/judges/starrah.png'
-import JudgeMurda from '../assets/judges/murda.png'
-import JudgeQuavo from '../assets/judges/quavo.png'
-import JudgeTakeoff from '../assets/judges/takeoff.png'
+import JudgeStarrah from '../assets/judges/starrah.jpg'
+import JudgeMurda from '../assets/judges/murda.jpg'
+import JudgeQuavo from '../assets/judges/quavo.jpg'
+import JudgeTakeoff from '../assets/judges/takeoff.jpg'
 
 import Facebook from '../assets/social/facebook.png'
 import Twitter from '../assets/social/twitter.svg'
@@ -308,11 +308,19 @@ export default () => {
               <img className={classes.judgesImg} src={Judges} alt='Meet Your Hosts And Judges'/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+              <Link href='https://www.instagram.com/whereisstarrah/?hl=en' target='_blank'>
+                <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+              </Link>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>STARRAH</strong>
               </Typography>
+              <Link href='https://www.instagram.com/whereisstarrah/?hl=en' target='_blank'>
+                <Typography variant='h6' align='center'>
+                  <strong>@whereisstarrah</strong>
+                </Typography>
+              </Link>
+              <br />
               <Typography variant='h6' align='center'>
                 Starrah has written 14 singles that have reached the Top 20 on the
                 Billboard Hot 100;  two of which went No. 1 (“Havana” by Camila
@@ -320,31 +328,55 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+              <Link href='https://www.instagram.com/murdabeatz/?hl=en' target='_blank'>
+                <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+              </Link>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>MURDA BEATZ</strong>
               </Typography>
+              <Link href='https://www.instagram.com/murdabeatz/?hl=en' target='_blank'>
+                <Typography variant='h6' align='center'>
+                  <strong>@murdabeatz</strong>
+                </Typography>
+              </Link>
+              <br />
               <Typography variant='h6' align='center'>
                 Murda Beatz has produced numerous hit singles for top rappers including Travis Scott, Gucci Mane, Drake, Migos, and 6ix9ine, alongside frequent collaborators Cubeatz.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              <Link href='https://www.instagram.com/quavohuncho/?hl=en' target='_blank'>
+                <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              </Link>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>QUAVO</strong>
               </Typography>
+              <Link href='https://www.instagram.com/quavohuncho/?hl=en' target='_blank'>
+                <Typography variant='h6' align='center'>
+                  <strong>@quavohuncho</strong>
+                </Typography>
+              </Link>
+              <br/>
               <Typography variant='h6' align='center'>
                 Quavo is a rapper, singer, songwriter, and record producer, best known as a member of Migos and has numerous hits that have made the top 10 of the Billboard Hot 100 with Migos and other collaborations.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              <Link href='https://www.instagram.com/yrntakeoff/?hl=en' target='_blank'>
+                <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              </Link>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>TAKEOFF</strong>
               </Typography>
+              <Link href='https://www.instagram.com/yrntakeoff/?hl=en' target='_blank'>
+                <Typography variant='h6' align='center'>
+                  <strong>@yrntakeoff</strong>
+                </Typography>
+              </Link>
+              <br />
               <Typography variant='h6' align='center'>
                 Takeoff is a rapper, singer, and songwriter with several top 10 singles to his name as a member of Migos.
               </Typography>
