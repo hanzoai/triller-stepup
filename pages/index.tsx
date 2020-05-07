@@ -484,7 +484,7 @@ export default () => {
             </Grid>
           </Grid>
         </Container>
-        <Container className={classes.grandprizes} maxWidth='md'>
+        <Container className={classes.grandprizes} maxWidth='lg'>
           <Grid container alignItems='center' spacing={8}>
             <Grid item xs={12}>
               <img className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
