@@ -1,10 +1,26 @@
+import {
+  Link,
+} from '@material-ui/core'
+
+import AppStore from '../../assets/appstore.png'
+import PlayStore from '../../assets/playstore.png'
+
 export default {
   faqs: [
     {
       question: 'How do I make a Triller profile?',
       answer: (
         <ol>
-          <li>Download Triller</li>
+          <li>
+            Download Triller
+            <br/>
+            <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' rel='nofollow' target='_blank'>
+              <img style={{ width: 100, paddingRight: 8 }} src={AppStore} alt='Download on the AppStore'/>
+            </Link>
+            <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
+              <img style={{ width: 100 }} src={PlayStore} alt='Get It On Google Play'/>
+            </Link>
+          </li>
           <li>Select the pink “Sign up / log in” button</li>
           <li>Select “email address”</li>
           <li>Enter your email address, desired username and set your password</li>
