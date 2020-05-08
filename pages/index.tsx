@@ -432,13 +432,15 @@ export default () => {
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item xs={12}>
-              <Vimeo
-                video='416327195'
-                className={classes.intro}
-                responsive={true}
-              />
-            </Grid>
+            {
+              // <Grid item xs={12}>
+              //   <Vimeo
+              //     video='416327195'
+              //     className={classes.intro}
+              //     responsive={true}
+              //   />
+              // </Grid>
+            }
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
