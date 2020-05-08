@@ -21,6 +21,7 @@ import HTMLComment from 'react-html-comment'
 import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -482,7 +483,7 @@ export default () => {
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
-                <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+                <LazyLoadImage className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
               <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openStarrah} videoId='kBQYcmMxXpI' onClose={() => setOpenStarrah(false)} />
@@ -491,7 +492,7 @@ export default () => {
                 <strong>STARRAH</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenStarrah(true)}>
-                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
+                <LazyLoadImage src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
                 <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br />
@@ -503,7 +504,7 @@ export default () => {
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenMurda(true)}>
-                <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+                <LazyLoadImage className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
               <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openMurda} videoId='Uv8_LVLHm5w' onClose={() => setOpenMurda(false)} />
@@ -512,7 +513,7 @@ export default () => {
                 <strong>MURDA BEATZ</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenMurda(true)}>
-                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@murdabeatz</strong>
+                <LazyLoadImage src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@murdabeatz</strong>
                 <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br />
@@ -521,13 +522,13 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              <LazyLoadImage className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>QUAVO</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle2}>
-                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@quavohuncho</strong>
+                <LazyLoadImage src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@quavohuncho</strong>
               </Typography>
               <br/>
               <Typography variant='h6' align='center'>
@@ -535,13 +536,13 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              <LazyLoadImage className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>TAKEOFF</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle2}>
-                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@yrntakeoff</strong>
+                <LazyLoadImage src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@yrntakeoff</strong>
               </Typography>
               <br />
               <Typography variant='h6' align='center'>
@@ -553,7 +554,7 @@ export default () => {
         <Container className={classes.apps} maxWidth='lg'>
           <Grid container alignItems='center' spacing={4}>
             <Grid item xs={12}>
-              <img className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
+              <LazyLoadImage className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
@@ -566,16 +567,16 @@ export default () => {
               <br/>
             </Grid>
             <Grid item xs={12}>
-              <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
+              <LazyLoadImage className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
             </Grid>
             <Grid item xs={6}>
               <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' rel='nofollow' target='_blank'>
-                <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
+                <LazyLoadImage className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
               </Link>
             </Grid>
             <Grid item xs={6}>
               <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
-                <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
+                <LazyLoadImage className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
             </Grid>
             <Grid item xs={12}>
@@ -583,15 +584,15 @@ export default () => {
                 <Typography variant='h6' className={classes.directions}>
                   <ol>
                     <li>
-                      <img className={classes.howToImg} src={HowTo1} alt='Step 1'/>
+                      <LazyLoadImage className={classes.howToImg} src={HowTo1} alt='Step 1'/>
                       Download and update Triller to enter. Make a profile using your email and connect your Instagram.
                     </li>
                     <li>
-                      <img className={classes.howToImg} src={HowTo2} alt='Step 2'/>
+                      <LazyLoadImage className={classes.howToImg} src={HowTo2} alt='Step 2'/>
                       Select “Social” and record up to :90 seconds of any song of your choice.
                     </li>
                     <li>
-                      <img className={classes.howToImg} src={HowTo3} alt='Step 3'/>
+                      <LazyLoadImage className={classes.howToImg} src={HowTo3} alt='Step 3'/>
                       Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!
                     </li>
                   </ol>
@@ -616,13 +617,13 @@ export default () => {
         <Container className={classes.grandprizes} maxWidth='lg'>
           <Grid container alignItems='center' spacing={8}>
             <Grid item xs={12}>
-              <img className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
+              <LazyLoadImage className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
             </Grid>
           </Grid>
           <Container className={classes.recordPoints} maxWidth='sm'>
             <Grid container alignItems='center' spacing={4}>
               <Grid item sm={2} xs={3}>
-                <img className={classes.recordImg} src={Record} alt='Record'/>
+                <LazyLoadImage className={classes.recordImg} src={Record} alt='Record'/>
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
@@ -630,7 +631,7 @@ export default () => {
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
-                <img className={classes.recordImg} src={Record} alt='Record'/>
+                <LazyLoadImage className={classes.recordImg} src={Record} alt='Record'/>
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
@@ -638,7 +639,7 @@ export default () => {
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
-                <img className={classes.recordImg} src={Record} alt='Record'/>
+                <LazyLoadImage className={classes.recordImg} src={Record} alt='Record'/>
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
@@ -646,7 +647,7 @@ export default () => {
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
-                <img className={classes.recordImg} src={Record} alt='Record'/>
+                <LazyLoadImage className={classes.recordImg} src={Record} alt='Record'/>
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
@@ -654,7 +655,7 @@ export default () => {
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
-                <img className={classes.recordImg} src={Record} alt='Record'/>
+                <LazyLoadImage className={classes.recordImg} src={Record} alt='Record'/>
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
@@ -674,7 +675,7 @@ export default () => {
         </Container>
 
         <Container className={classes.faq} maxWidth='sm'>
-          <img className={classes.faqImg} src={FAQINFO} alt='FAQ & Information'/>
+          <LazyLoadImage className={classes.faqImg} src={FAQINFO} alt='FAQ & Information'/>
           <br/>
           { faqConfig.faqs.map((x: any, i) => (
             <ExpansionPanel key={x.question}>
@@ -724,31 +725,31 @@ export default () => {
             <Grid item xs={12} sm={4} className={classes.socialButtons}>
               <Link href='https://www.facebook.com/trillervidsapp/' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.footerIcon} src={Facebook} alt='Follow us on Facebook'/>
+                  <LazyLoadImage className={classes.footerIcon} src={Facebook} alt='Follow us on Facebook'/>
                   <HTMLComment text='By Raj Dev from freeicons.co'/>
                 </IconButton>
               </Link>
               <Link href='https://www.twitter.com/triller' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.footerIcon} src={Twitter} alt='Follow us on Twitter'/>
+                  <LazyLoadImage className={classes.footerIcon} src={Twitter} alt='Follow us on Twitter'/>
                   <HTMLComment text='By Icons8'/>
                 </IconButton>
               </Link>
               <Link href='https://www.instagram.com/trillervids/' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.footerIcon} src={Instagram} alt='Follow us on Instagram'/>
+                  <LazyLoadImage className={classes.footerIcon} src={Instagram} alt='Follow us on Instagram'/>
                   <HTMLComment text='By Iconfinder'/>
                 </IconButton>
               </Link>
               <Link href='https://www.youtube.com/channel/UCOVQQTFALLID0EyoBMHaCsg' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.wideFooterIcon} src={Youtube} alt='Follow us on Youtube'/>
+                  <LazyLoadImage className={classes.wideFooterIcon} src={Youtube} alt='Follow us on Youtube'/>
                 </IconButton>
               </Link>
             </Grid>
             <Grid item xs={12} sm={4}>
               <Link href='https://triller.co'>
-                <img className={classes.footerLogo} src={TrillerLogo} alt='Triller'/>
+                <LazyLoadImage className={classes.footerLogo} src={TrillerLogo} alt='Triller'/>
               </Link>
             </Grid>
             <Grid item xs={12} sm={4} className={classes.downloadButtons}>
@@ -757,12 +758,12 @@ export default () => {
               </Typography>
               <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.footerIcon} src={Apple} alt='Download at the Apple App Store'/>
+                  <LazyLoadImage className={classes.footerIcon} src={Apple} alt='Download at the Apple App Store'/>
                 </IconButton>
               </Link>
               <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' target='_blank'>
                 <IconButton className={classes.footerButton}>
-                  <img className={classes.footerIcon} src={Google} alt='Download at the Goople Play Store'/>
+                  <LazyLoadImage className={classes.footerIcon} src={Google} alt='Download at the Goople Play Store'/>
                 </IconButton>
               </Link>
             </Grid>
