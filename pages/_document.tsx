@@ -75,10 +75,15 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name='theme-color' content={theme.palette.primary.main} />
           <style dangerouslySetInnerHTML={{__html: `
-            body: {
+            body {
               width: 100vw;
               overflow-x: hidden;
-            },
+            }
+
+            body > main {
+              width: 100vw;
+              overflow-x: hidden;
+            }
           `}}/>
         </Head>
         <body>
