@@ -390,6 +390,8 @@ export default () => {
     rel: 0,
   }
 
+  const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth}:${window.innerHeight}`
+
   return (
     <div>
       <div className={classes.body}>
@@ -431,7 +433,7 @@ export default () => {
                 <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
-              <ModalVideo channel='youtube' youtube={modalOpts} isOpen={openStarrah} videoId='L61p2uyiMSo' onClose={() => setOpenStarrah(false)} />
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openStarrah} videoId='kBQYcmMxXpI' onClose={() => setOpenStarrah(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>STARRAH</strong>
@@ -452,7 +454,7 @@ export default () => {
                 <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
-              <ModalVideo channel='youtube' youtube={modalOpts} isOpen={openMurda} videoId='L61p2uyiMSo' onClose={() => setOpenMurda(false)} />
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openMurda} videoId='Uv8_LVLHm5w' onClose={() => setOpenMurda(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>MURDA BEATZ</strong>
