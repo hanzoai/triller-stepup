@@ -61,6 +61,8 @@ import Youtube from '../assets/social/youtube.png'
 import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
+import IntroVideo from '../assets/introvideoscreen.jpg'
+
 import faqConfig from '../src/config/faq'
 
 const useStyles = makeStyles((theme) => ({
@@ -349,6 +351,24 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     display: 'block',
+    position: 'relative',
+  },
+
+  introImg: {
+    width: '100%',
+    zIndex: 100,
+    cursor: 'pointer',
+    filter: 'brightness(50%)',
+  },
+
+  introPlayIcon: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%,-50%)',
+    fontSize: '4rem',
+    zIndex: 101,
+    pointerEvents: 'none',
   },
 }))
 
@@ -357,6 +377,7 @@ export default () => {
 
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
+  const [openIntro, setOpenIntro] = useState(false)
 
   // const [logoShow, setLogoShow] = useState(false)
   // const [slide1, setSlide1] = useState(false)
@@ -432,15 +453,28 @@ export default () => {
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
-            {
-              // <Grid item xs={12}>
-              //   <Vimeo
-              //     video='416327195'
-              //     className={classes.intro}
-              //     responsive={true}
-              //   />
-              // </Grid>
-            }
+            <Grid item xs={12}>
+              <div
+                className={classes.intro}
+              >
+                <div style={{ opacity: openIntro ? 0 : 1 }}>
+                  <img src={IntroVideo} alt='Intro to Triller StepUp' className={classes.introImg} onClick={() => setOpenIntro(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  openIntro &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <Vimeo
+                        video='416327195'
+                        responsive={true}
+                        autoplay={openIntro}
+                      />
+                    </div>
+                  )
+                }
+              </div>
+            </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
