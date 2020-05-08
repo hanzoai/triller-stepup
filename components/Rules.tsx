@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core'
 
 export default () => (
-  <div>
+  <div style={{ maxHeight: '80vh', overflow: 'scroll', }}>
     <Typography variant='h6' style={{fontFamily: '"ProximaNova",serif', textAlign: 'center'}}><strong>STEP UP TO THE MIC CONTEST (POWERED BY BOOST MOBILE</strong><sup>®</sup><strong>)</strong></Typography>
     <br/>
     <Typography variant='h6' style={{fontFamily: '"ProximaNova",serif', textAlign: 'center'}}><strong>OFFICIAL RULES</strong></Typography>
