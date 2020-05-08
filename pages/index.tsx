@@ -21,6 +21,7 @@ import ReactYouTube from 'react-youtube'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
+import Rules from '../components/Rules'
 
 import TrillerBG from '../assets/trillerbg4.jpg'
 // import TrillerBG2 from '../assets/trillerbg2.png'
@@ -569,6 +570,19 @@ export default () => {
               </ExpansionPanelDetails>
             </ExpansionPanel>
           ))}
+          <br/>
+          <ExpansionPanel>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon/>}
+              aria-controls='STEP UP TO THE MIC CONTEST (POWERED BY BOOST MOBILE®) OFFICIAL RULES'
+              id='official-rules'
+            >
+              <Typography variant='body1'>STEP UP TO THE MIC CONTEST (POWERED BY BOOST MOBILE®) OFFICIAL RULES</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.faqAnswer}>
+              <Rules/>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
         </Container>
 
         <div className={classes.contact}>
