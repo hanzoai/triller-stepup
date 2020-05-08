@@ -489,6 +489,10 @@ export default () => {
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
                       <Vimeo
                         video='416327195'
+                        showTitle={false}
+                        showPortrait={false}
+                        sidedock={false}
+                        controls={false}
                         responsive={true}
                         autoplay={!isBelowSM && openIntro}
                       />
