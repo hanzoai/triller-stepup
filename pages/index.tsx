@@ -18,6 +18,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
+import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
 
 import Countdown from '../components/Countdown'
@@ -311,7 +312,7 @@ const useStyles = makeStyles((theme) => ({
   trillerIcon: {
     display: 'inline-block',
     height: '1.5rem',
-    transform: 'translateY(.35rem)',
+    transform: 'translate(2px, .35rem)',
   },
 
   howToImg: {
@@ -337,13 +338,16 @@ const useStyles = makeStyles((theme) => ({
   },
 
   playable2: {
-    transform: 'translate(-4px, .35rem) scale(.8)',
+    transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
   },
 }))
 
 export default () => {
   const classes = useStyles()
+
+  const [openStarrah, setOpenStarrah] = useState(false)
+  const [openMurda, setOpenMurda] = useState(false)
 
   // const [logoShow, setLogoShow] = useState(false)
   // const [slide1, setSlide1] = useState(false)
@@ -376,7 +380,15 @@ export default () => {
       playsinline: 1,
       rel: 0,
     },
-  };
+  }
+
+  const modalOpts = {
+    controls: 1,
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+  }
 
   return (
     <div>
@@ -415,16 +427,17 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div className={classes.playable}>
+              <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
                 <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} isOpen={openStarrah} videoId='L61p2uyiMSo' onClose={() => setOpenStarrah(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>STARRAH</strong>
               </Typography>
-              <Typography variant='h6' align='center' className={classes.trillerHandle}>
-                <strong>@whereisstarrah</strong><img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/>
+              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenStarrah(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
                 <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br />
@@ -435,15 +448,17 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div className={classes.playable}>
+              <div className={classes.playable} onClick={() => setOpenMurda(true)}>
                 <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} isOpen={openMurda} videoId='L61p2uyiMSo' onClose={() => setOpenMurda(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>MURDA BEATZ</strong>
               </Typography>
-              <Typography variant='h6' align='center' className={classes.trillerHandle}>
-                <strong>@murdabeatz</strong><img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/>
+              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenMurda(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@murdabeatz</strong>
                 <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br />
@@ -458,7 +473,7 @@ export default () => {
                 <strong>QUAVO</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle2}>
-                <strong>@quavohuncho</strong><img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@quavohuncho</strong>
               </Typography>
               <br/>
               <Typography variant='h6' align='center'>
@@ -472,7 +487,7 @@ export default () => {
                 <strong>TAKEOFF</strong>
               </Typography>
               <Typography variant='h6' align='center' className={classes.trillerHandle2}>
-                <strong>@yrntakeoff</strong><img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@yrntakeoff</strong>
               </Typography>
               <br />
               <Typography variant='h6' align='center'>

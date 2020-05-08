@@ -56,6 +56,7 @@ export default class MyDocument extends Document {
             Download their file and extract it into 'public/icons'
             You do not need to change the icon names, they will auto import appropriately
           */}
+          <link rel='stylesheet' href='/index.css' />
           <link rel='stylesheet' href='/fonts/fonts.css' />
           <link rel='icon' href='/favicon.ico' />
           <link rel='manifest' href='/manifest.json' />
