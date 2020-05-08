@@ -390,7 +390,7 @@ export default () => {
     rel: 0,
   }
 
-  const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth}:${window.innerHeight+200}`
+  const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth+200}:${window.innerHeight}`
 
   return (
     <div>
