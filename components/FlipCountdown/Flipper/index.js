@@ -16,16 +16,16 @@ export default function(props) {
     let id;
     if (typeof now === 'string') {
       setSeparator(true);
-      setOldVal(now);
+      setOldVal(Math.max(now, 0));
     } else if (typeof prevNowRef.current === 'undefined') {
-      setOldVal(now);
+      setOldVal(Math.max(now, 0));
     } else if (now !== prevNowRef.current) {
-      setOldVal(prevNowRef.current);
-      setNewVal(now);
+      setOldVal(Math.max(prevNowRef.current, 0));
+      setNewVal(Math.max(now, 0));
       setFlip(true);
       id = setTimeout(() => {
         setFlip(false);
-        setOldVal(now);
+        setOldVal(Math.max(now, 0));
       }, 600);
     }
     prevNowRef.current = now;
