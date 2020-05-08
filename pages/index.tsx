@@ -62,6 +62,7 @@ import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
 import IntroVideo from '../assets/introvideoscreen.jpg'
+import HowToVideo from '../assets/youtubeoverlay.jpg'
 
 import faqConfig from '../src/config/faq'
 
@@ -370,6 +371,22 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 101,
     pointerEvents: 'none',
   },
+
+  howToContainer: {
+    maxWidth: 300,
+    width: '100%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'block',
+    position: 'relative',
+  },
+
+  howToImg2: {
+    width: '100%',
+    zIndex: 100,
+    cursor: 'pointer',
+    filter: 'brightness(75%)',
+  },
 }))
 
 export default () => {
@@ -378,6 +395,7 @@ export default () => {
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
   const [openIntro, setOpenIntro] = useState(false)
+  const [openHowTo, setOpenHowTo] = useState(false)
 
   // const [logoShow, setLogoShow] = useState(false)
   // const [slide1, setSlide1] = useState(false)
@@ -405,7 +423,7 @@ export default () => {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       controls: 1,
-      autoplay: 0,
+      autoplay: 1,
       modestbranding: 1,
       playsinline: 1,
       rel: 0,
@@ -562,7 +580,22 @@ export default () => {
               <br/>
             </Grid>
             <Grid item xs={12}>
-              <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
+              <div
+                className={classes.howToContainer}
+              >
+                <div style={{ opacity: openHowTo ? 0 : 1 }}>
+                  <img src={HowToVideo} alt='Intro to Triller StepUp' className={classes.howToImg2} onClick={() => setOpenHowTo(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  openHowTo &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
+                    </div>
+                  )
+                }
+              </div>
               <br/>
             </Grid>
             <Grid item xs={12}>
