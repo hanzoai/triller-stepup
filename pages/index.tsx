@@ -1,5 +1,8 @@
 import {
   Container,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
   Fade,
   Grid,
   Grow,
@@ -10,16 +13,19 @@ import {
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
+import ReactYouTube from 'react-youtube'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
 
 import TrillerBG from '../assets/trillerbg4.jpg'
-import TrillerBG2 from '../assets/trillerbg2.png'
-import StartRecording from '../assets/startrecording.png'
+// import TrillerBG2 from '../assets/trillerbg2.png'
+// import StartRecording from '../assets/startrecording.png'
+// import HowToAudition from '../assets/howtoaudition.png'
 import DownloadNow from '../assets/downloadnow.png'
 import AppStore from '../assets/appstore.png'
 import PlayStore from '../assets/playstore.png'
@@ -27,10 +33,11 @@ import StepUpLogo1 from '../assets/trillerheader2.png'
 // import StepUpLogo2 from '../assets/stepuplogo2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
-import BoostLogo from '../assets/logo-boost.png'
+// import BoostLogo from '../assets/logo-boost.png'
 import GrandPrizes from '../assets/grandprizes.png'
 import Record from '../assets/record.png'
 import Judges from '../assets/judges.png'
+import FAQINFO from '../assets/faqandinfo.png'
 
 import JudgeStarrah from '../assets/judges/starrah.jpg'
 import JudgeMurda from '../assets/judges/murda.jpg'
@@ -43,6 +50,8 @@ import Instagram from '../assets/social/instagram.svg'
 import Youtube from '../assets/social/youtube.png'
 import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
+
+import faqConfig from '../src/config/faq'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -111,6 +120,13 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 400,
     width: '100%',
   },
+  howToAudition: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 400,
+    width: '100%',
+  },
   downloadNowImg: {
     display: 'block',
     marginLeft: 'auto',
@@ -123,12 +139,24 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     maxWidth: 200,
     width: '100%',
+    border: '2px solid white',
+    borderRadius: 8,
+
+    '&:hover': {
+      borderColor: theme.palette.primary.main,
+    },
   },
   playStoreImg: {
     display: 'block',
     marginRight: 'auto',
     maxWidth: 200,
     width: '100%',
+    border: '2px solid white',
+    borderRadius: 8,
+
+    '&:hover': {
+      borderColor: theme.palette.primary.main,
+    },
   },
   newsletter: {
     marginLeft: 'auto',
@@ -174,17 +202,17 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
   },
   judges: {
-    paddingTop: '5vh',
-    paddingBottom: '15vh',
+    // paddingTop: '5vh',
+    paddingBottom: '10vh',
   },
-  judgesImg: {
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: 1000,
-    width: '100%',
-    marginBottom: theme.spacing(4),
-  },
+  // judgesImg: {
+  //   display: 'block',
+  //   marginLeft: 'auto',
+  //   marginRight: 'auto',
+  //   maxWidth: 1000,
+  //   width: '100%',
+  //   marginBottom: theme.spacing(4),
+  // },
   judgeImg: {
     display: 'block',
     marginLeft: 'auto',
@@ -226,28 +254,69 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
     }
   },
+  faq: {
+    paddingTop: '5vh',
+    paddingBottom: '5vh',
+  },
+  faqImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+  },
+  faqAnswer: {
+    backgroundColor: 'rgb(0,0,0,0.4)',
+  },
+
+  hashtags: {
+    color: theme.palette.primary.main,
+    fontWeight: 600,
+  },
+
+  directions: {
+    textTransform: 'uppercase',
+  },
+
+  video: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'block',
+  },
 }))
 
 export default () => {
   const classes = useStyles()
 
-  const [logoShow, setLogoShow] = useState(false)
-  const [slide1, setSlide1] = useState(false)
-  const [slide2, setSlide2] = useState(false)
+  // const [logoShow, setLogoShow] = useState(false)
+  // const [slide1, setSlide1] = useState(false)
+  // const [slide2, setSlide2] = useState(false)
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSlide1(true)
-    }, 200)
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSlide1(true)
+  //   }, 200)
 
-    setTimeout(() => {
-      setSlide2(true)
-    }, 800)
+  //   setTimeout(() => {
+  //     setSlide2(true)
+  //   }, 800)
 
-    setTimeout(() => {
-      setLogoShow(true)
-    }, 1400)
-  }, [])
+  //   setTimeout(() => {
+  //     setLogoShow(true)
+  //   }, 1400)
+  // }, [])
+
+  const opts: any = {
+    height: '650',
+    width: '360',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      controls: 1,
+      autoplay: 0,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+    },
+  };
 
   return (
     <div>
@@ -278,34 +347,12 @@ export default () => {
             // </Fade>
           }
         </Container>
-        <Container className={classes.apps} maxWidth='lg'>
-          <Typography variant='h3' align='center' className={classes.auditions}>
-            AUDITIONS OPEN 5/8
-          </Typography>
-          <Countdown/>
-          <Grid container alignItems='center' spacing={4}>
-            <Grid item xs={12}>
-              <img className={classes.recordingImg} src={StartRecording} alt='Start Recording Your Practice Submissions'/>
-            </Grid>
-            <Grid item xs={12}>
-              <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
-            </Grid>
-            <Grid item xs={6}>
-              <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' rel='nofollow' target='_blank'>
-                <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
-              </Link>
-            </Grid>
-            <Grid item xs={6}>
-              <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
-                <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
-              </Link>
-            </Grid>
-          </Grid>
-        </Container>
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item md={12}>
-              <img className={classes.judgesImg} src={Judges} alt='Meet Your Hosts And Judges'/>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                MEET YOUR HOSTS & JUDGES
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Link href='https://www.instagram.com/whereisstarrah/?hl=en' target='_blank'>
@@ -383,7 +430,61 @@ export default () => {
             </Grid>
           </Grid>
         </Container>
-        <Container className={classes.grandprizes} maxWidth='lg'>
+        <Container className={classes.apps} maxWidth='lg'>
+          <Typography variant='h3' align='center' className={classes.auditions}>
+            CALLING ALL ASPIRING ARTISTS
+          </Typography>
+          <Grid container alignItems='center' spacing={4}>
+            <Grid item xs={12}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                HOW TO AUDITION
+              </Typography>
+              <br/>
+            </Grid>
+            <Grid item xs={12}>
+              <ReactYouTube className={classes.video} videoId='dQw4w9WgXcQ' opts={opts}/>
+              <br/>
+            </Grid>
+            <Grid item xs={12}>
+              <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
+            </Grid>
+            <Grid item xs={6}>
+              <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' rel='nofollow' target='_blank'>
+                <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
+              </Link>
+            </Grid>
+            <Grid item xs={6}>
+              <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
+                <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
+              </Link>
+            </Grid>
+            <Grid item xs={12}>
+              <Container maxWidth='sm'>
+                <Typography variant='h6' className={classes.directions}>
+                  <ol>
+                    <li>Download and update Triller to enter. Make a profile using your email and connect your Instagram.</li>
+                    <li>Select “Social” and record up to :90 seconds of any song of your choice.</li>
+                    <li>Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!</li>
+                  </ol>
+                </Typography>
+              </Container>
+            </Grid>
+            <Grid item xs={12}>
+              <Container maxWidth='md'>
+                <Typography variant='h4' align='center'>
+                  Auditions Close May 29th, 2020
+                </Typography>
+
+                <Countdown target='2020-05-29 12:59:59-04:00'/>
+
+                <Typography variant='h6' align='center'>
+                  Check back here on June 5th, 2020 to vote for your favorite contestant!
+                </Typography>
+              </Container>
+            </Grid>
+          </Grid>
+        </Container>
+        <Container className={classes.grandprizes} maxWidth='md'>
           <Grid container alignItems='center' spacing={8}>
             <Grid item xs={12}>
               <img className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
@@ -442,6 +543,26 @@ export default () => {
             </Grid>
           </Container>
         </Container>
+
+        <Container className={classes.faq} maxWidth='sm'>
+          <img className={classes.faqImg} src={FAQINFO} alt='FAQ & Information'/>
+          <br/>
+          { faqConfig.faqs.map((x: any, i) => (
+            <ExpansionPanel key={x.question}>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon/>}
+                aria-controls={x.question}
+                id={`question-header${i}`}
+              >
+                <Typography variant='body1'>{x.question}</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails className={classes.faqAnswer}>
+                {x.answer}
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          ))}
+        </Container>
+
         <div className={classes.contact}>
           <Container maxWidth='lg'>
             <Grid container alignItems='center' spacing={4}>

@@ -92,7 +92,7 @@ export default function({
   return (
     <div className={styles['count-down']} style={{ fontSize: standard }}>
       {times.map(item => (
-        <Flipper now={item.data} index={item.index} style={style} />
+        <Flipper key={item.index} now={item.data} index={item.index} style={style} />
       ))}
     </div>
   );
