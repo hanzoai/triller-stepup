@@ -20,6 +20,7 @@ import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
 import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
+import Vimeo from '@u-wave/react-vimeo'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -341,6 +342,14 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
   },
+
+  intro: {
+    maxWidth: 640,
+    width: '100%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'block',
+  },
 }))
 
 export default () => {
@@ -423,7 +432,14 @@ export default () => {
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item md={12}>
+            <Grid item xs={12}>
+              <Vimeo
+                video='416327195'
+                className={classes.intro}
+                responsive={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
               </Typography>
