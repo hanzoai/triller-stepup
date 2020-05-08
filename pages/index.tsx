@@ -20,6 +20,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
 import ModalVideo from 'react-modal-video'
+import ReactPlayer from 'react-player'
 import ReactYouTube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
 
@@ -479,7 +480,7 @@ export default () => {
               <div
                 className={classes.intro}
               >
-                <div style={{ opacity: openIntro || isBelowSM ? 0 : 1 }}>
+                <div style={{ opacity: (openIntro || isBelowSM) ? 0 : 1 }}>
                   <img src={IntroVideo} alt='Intro to Triller StepUp' className={classes.introImg} onClick={() => setOpenIntro(true)}/>
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
@@ -487,14 +488,23 @@ export default () => {
                   (openIntro || isBelowSM) &&
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <Vimeo
-                        video='416390093'
-                        showTitle={false}
-                        showPortrait={false}
-                        sidedock={false}
-                        controls={false}
-                        responsive={true}
-                        autoplay={!isBelowSM && openIntro}
+                      <ReactPlayer
+                        config={{
+                          file: {
+                            attributes: {
+                              playsInline: true,
+                              poster: IntroVideo,
+                            },
+                          },
+                        }}
+                        playing={!isBelowSM && openIntro}
+                        width='100%'
+                        height='auto'
+                        controls
+                        url={[
+                          {src: 'videos/intro.webm', type: 'video/webm'},
+                          {src: 'videos/intro.mp4', type: 'video/mp4'}
+                        ]}
                       />
                     </div>
                   )
@@ -591,7 +601,7 @@ export default () => {
               <div
                 className={classes.howToContainer}
               >
-                <div style={{ opacity: openHowTo || isBelowSM ? 0 : 1 }}>
+                <div style={{ opacity: (openHowTo || isBelowSM) ? 0 : 1 }}>
                   <img src={HowToVideo} alt='Intro to Triller StepUp' className={classes.howToImg2} onClick={() => setOpenHowTo(true)}/>
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
