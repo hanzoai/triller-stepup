@@ -10,9 +10,10 @@ import {
   Link,
   Typography,
   Slide,
+  useMediaQuery,
 } from '@material-ui/core'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
@@ -392,10 +393,13 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const classes = useStyles()
 
+  const theme = useTheme()
+  const isBelowSM = useMediaQuery(theme.breakpoints.down('sm'))
+
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
-  const [openIntro, setOpenIntro] = useState(false)
-  const [openHowTo, setOpenHowTo] = useState(false)
+  const [openIntro, setOpenIntro] = useState(isBelowSM)
+  const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
   // const [logoShow, setLogoShow] = useState(false)
   // const [slide1, setSlide1] = useState(false)
@@ -432,7 +436,7 @@ export default () => {
 
   const modalOpts = {
     controls: 1,
-    autoplay: 1,
+    autoplay: isBelowSM ? 1 : 0,
     modestbranding: 1,
     playsinline: 1,
     rel: 0,
@@ -475,18 +479,18 @@ export default () => {
               <div
                 className={classes.intro}
               >
-                <div style={{ opacity: openIntro ? 0 : 1 }}>
+                <div style={{ opacity: openIntro || isBelowSM ? 0 : 1 }}>
                   <img src={IntroVideo} alt='Intro to Triller StepUp' className={classes.introImg} onClick={() => setOpenIntro(true)}/>
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
                 {
-                  openIntro &&
+                  (openIntro || isBelowSM) &&
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
                       <Vimeo
                         video='416327195'
                         responsive={true}
-                        autoplay={openIntro}
+                        autoplay={!isBelowSM && openIntro}
                       />
                     </div>
                   )
@@ -583,12 +587,12 @@ export default () => {
               <div
                 className={classes.howToContainer}
               >
-                <div style={{ opacity: openHowTo ? 0 : 1 }}>
+                <div style={{ opacity: openHowTo || isBelowSM ? 0 : 1 }}>
                   <img src={HowToVideo} alt='Intro to Triller StepUp' className={classes.howToImg2} onClick={() => setOpenHowTo(true)}/>
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
                 {
-                  openHowTo &&
+                  (openHowTo || isBelowSM) &&
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
                       <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
