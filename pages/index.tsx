@@ -14,13 +14,16 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
+import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
+import Rules from '../components/Rules'
 
 import TrillerBG from '../assets/trillerbg4.jpg'
 // import TrillerBG2 from '../assets/trillerbg2.png'
@@ -34,10 +37,16 @@ import StepUpLogo1 from '../assets/trillerheader2.png'
 import Prize from '../assets/prize.png'
 import TrillerLogo from '../assets/logo-triller.png'
 // import BoostLogo from '../assets/logo-boost.png'
+import CallingAllArtists from '../assets/calingallartists.png'
 import GrandPrizes from '../assets/grandprizes.png'
 import Record from '../assets/record.png'
 import Judges from '../assets/judges.png'
 import FAQINFO from '../assets/faqandinfo.png'
+import TrillerIcon from '../assets/trillericon.png'
+
+import HowTo1 from '../assets/howto1.png'
+import HowTo2 from '../assets/howto2.png'
+import HowTo3 from '../assets/howto3.png'
 
 import JudgeStarrah from '../assets/judges/starrah.jpg'
 import JudgeMurda from '../assets/judges/murda.jpg'
@@ -178,6 +187,14 @@ const useStyles = makeStyles((theme) => ({
   auditions: {
     marginTop: theme.spacing(2),
     fontWeight: 700,
+    textDecoration: 'uppercase',
+  },
+  callAllArtistImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 1200,
+    width: '100%',
   },
   grandprizes: {
     paddingTop: '5vh',
@@ -282,10 +299,55 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     display: 'block',
   },
+
+  trillerHandle: {
+    color: theme.palette.primary.main,
+    cursor: 'pointer'
+  },
+
+  trillerHandle2: {
+    color: theme.palette.primary.main,
+  },
+
+  trillerIcon: {
+    display: 'inline-block',
+    height: '1.5rem',
+    transform: 'translate(2px, .35rem)',
+  },
+
+  howToImg: {
+    maxWidth: 240,
+    width: '100%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'block',
+    transform: 'translateX(-20px)',
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+  },
+
+  playable: {
+    position: 'relative',
+    cursor: 'pointer',
+  },
+
+  playIcon: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+  },
+
+  playable2: {
+    transform: 'translateY(.35rem) scale(.8)',
+    color: '#FFF',
+  },
 }))
 
 export default () => {
   const classes = useStyles()
+
+  const [openStarrah, setOpenStarrah] = useState(false)
+  const [openMurda, setOpenMurda] = useState(false)
 
   // const [logoShow, setLogoShow] = useState(false)
   // const [slide1, setSlide1] = useState(false)
@@ -304,10 +366,12 @@ export default () => {
   //     setLogoShow(true)
   //   }, 1400)
   // }, [])
+  //
+  const ratio = 812/375
 
   const opts: any = {
-    height: '650',
-    width: '360',
+    height: 300 * ratio,
+    width: 300,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       controls: 1,
@@ -316,7 +380,17 @@ export default () => {
       playsinline: 1,
       rel: 0,
     },
-  };
+  }
+
+  const modalOpts = {
+    controls: 1,
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+  }
+
+  const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth}:${window.innerHeight}`
 
   return (
     <div>
@@ -355,18 +429,19 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Link href='https://www.instagram.com/whereisstarrah/?hl=en' target='_blank'>
+              <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
                 <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
-              </Link>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openStarrah} videoId='kBQYcmMxXpI' onClose={() => setOpenStarrah(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>STARRAH</strong>
               </Typography>
-              <Link href='https://www.instagram.com/whereisstarrah/?hl=en' target='_blank'>
-                <Typography variant='h6' align='center'>
-                  <strong>@whereisstarrah</strong>
-                </Typography>
-              </Link>
+              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenStarrah(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
+              </Typography>
               <br />
               <Typography variant='h6' align='center'>
                 Starrah has written 14 singles that have reached the Top 20 on the
@@ -375,54 +450,47 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Link href='https://www.instagram.com/murdabeatz/?hl=en' target='_blank'>
+              <div className={classes.playable} onClick={() => setOpenMurda(true)}>
                 <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
-              </Link>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openMurda} videoId='Uv8_LVLHm5w' onClose={() => setOpenMurda(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>MURDA BEATZ</strong>
               </Typography>
-              <Link href='https://www.instagram.com/murdabeatz/?hl=en' target='_blank'>
-                <Typography variant='h6' align='center'>
-                  <strong>@murdabeatz</strong>
-                </Typography>
-              </Link>
+              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenMurda(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@murdabeatz</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
+              </Typography>
               <br />
               <Typography variant='h6' align='center'>
                 Murda Beatz has produced numerous hit singles for top rappers including Travis Scott, Gucci Mane, Drake, Migos, and 6ix9ine, alongside frequent collaborators Cubeatz.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Link href='https://www.instagram.com/quavohuncho/?hl=en' target='_blank'>
-                <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
-              </Link>
+              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>QUAVO</strong>
               </Typography>
-              <Link href='https://www.instagram.com/quavohuncho/?hl=en' target='_blank'>
-                <Typography variant='h6' align='center'>
-                  <strong>@quavohuncho</strong>
-                </Typography>
-              </Link>
+              <Typography variant='h6' align='center' className={classes.trillerHandle2}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@quavohuncho</strong>
+              </Typography>
               <br/>
               <Typography variant='h6' align='center'>
                 Quavo is a rapper, singer, songwriter, and record producer, best known as a member of Migos and has numerous hits that have made the top 10 of the Billboard Hot 100 with Migos and other collaborations.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Link href='https://www.instagram.com/yrntakeoff/?hl=en' target='_blank'>
-                <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
-              </Link>
+              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
               <br />
               <Typography variant='h4' align='center'>
                 <strong>TAKEOFF</strong>
               </Typography>
-              <Link href='https://www.instagram.com/yrntakeoff/?hl=en' target='_blank'>
-                <Typography variant='h6' align='center'>
-                  <strong>@yrntakeoff</strong>
-                </Typography>
-              </Link>
+              <Typography variant='h6' align='center' className={classes.trillerHandle2}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@yrntakeoff</strong>
+              </Typography>
               <br />
               <Typography variant='h6' align='center'>
                 Takeoff is a rapper, singer, and songwriter with several top 10 singles to his name as a member of Migos.
@@ -431,10 +499,10 @@ export default () => {
           </Grid>
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
-          <Typography variant='h3' align='center' className={classes.auditions}>
-            CALLING ALL ASPIRING ARTISTS
-          </Typography>
           <Grid container alignItems='center' spacing={4}>
+            <Grid item xs={12}>
+              <img className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
+            </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 HOW TO AUDITION
@@ -442,7 +510,7 @@ export default () => {
               <br/>
             </Grid>
             <Grid item xs={12}>
-              <ReactYouTube className={classes.video} videoId='dQw4w9WgXcQ' opts={opts}/>
+              <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
               <br/>
             </Grid>
             <Grid item xs={12}>
@@ -462,16 +530,25 @@ export default () => {
               <Container maxWidth='sm'>
                 <Typography variant='h6' className={classes.directions}>
                   <ol>
-                    <li>Download and update Triller to enter. Make a profile using your email and connect your Instagram.</li>
-                    <li>Select “Social” and record up to :90 seconds of any song of your choice.</li>
-                    <li>Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!</li>
+                    <li>
+                      <img className={classes.howToImg} src={HowTo1} alt='Step 1'/>
+                      Download and update Triller to enter. Make a profile using your email and connect your Instagram.
+                    </li>
+                    <li>
+                      <img className={classes.howToImg} src={HowTo2} alt='Step 2'/>
+                      Select “Social” and record up to :90 seconds of any song of your choice.
+                    </li>
+                    <li>
+                      <img className={classes.howToImg} src={HowTo3} alt='Step 3'/>
+                      Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!
+                    </li>
                   </ol>
                 </Typography>
               </Container>
             </Grid>
             <Grid item xs={12}>
               <Container maxWidth='md'>
-                <Typography variant='h4' align='center'>
+                <Typography variant='h3' align='center' className={classes.auditions}>
                   Auditions Close May 29th, 2020
                 </Typography>
 
@@ -484,7 +561,7 @@ export default () => {
             </Grid>
           </Grid>
         </Container>
-        <Container className={classes.grandprizes} maxWidth='md'>
+        <Container className={classes.grandprizes} maxWidth='lg'>
           <Grid container alignItems='center' spacing={8}>
             <Grid item xs={12}>
               <img className={classes.grandprizesImg} src={GrandPrizes} alt='Grand Prizes'/>
@@ -505,7 +582,7 @@ export default () => {
               </Grid>
               <Grid item sm={10} xs={9}>
                 <Typography variant='h4' align='left'>
-                  Record an original hit song written by Starrah, produced by Murda Beatz, featuring Quavo and Takeoff
+                  Record an original hit song written by Starrah, produced by Murda Beatz and featuring Quavo & Takeoff
                 </Typography>
               </Grid>
               <Grid item sm={2} xs={3}>
@@ -561,6 +638,19 @@ export default () => {
               </ExpansionPanelDetails>
             </ExpansionPanel>
           ))}
+          <br/>
+          <ExpansionPanel>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon/>}
+              aria-controls='STEP UP TO THE MIC CONTEST (POWERED BY BOOST MOBILE®) OFFICIAL RULES'
+              id='official-rules'
+            >
+              <Typography variant='body1'>STEP UP TO THE MIC CONTEST (POWERED BY BOOST MOBILE®) OFFICIAL RULES</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.faqAnswer}>
+              <Rules/>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
         </Container>
 
         <div className={classes.contact}>
