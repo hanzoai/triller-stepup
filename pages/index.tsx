@@ -610,12 +610,12 @@ export default () => {
               <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
             </Grid>
             <Grid item xs={6}>
-              <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' rel='nofollow' target='_blank'>
+              <Link href='/appstore' rel='nofollow' target='_blank'>
                 <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
               </Link>
             </Grid>
             <Grid item xs={6}>
-              <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' rel='nofollow' target='_blank'>
+              <Link href='/playstore' rel='nofollow' target='_blank'>
                 <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
             </Grid>
@@ -796,12 +796,12 @@ export default () => {
               <Typography variant='body1' style={{ display: 'inline-block', marginRight: 20 }}>
                 <strong>Download</strong>
               </Typography>
-              <Link href='https://itunes.apple.com/us/app/triller-social-video-platform/id994905763' target='_blank'>
+              <Link href='/appstore' target='_blank'>
                 <IconButton className={classes.footerButton}>
                   <img className={classes.footerIcon} src={Apple} alt='Download at the Apple App Store'/>
                 </IconButton>
               </Link>
-              <Link href='https://play.google.com/store/apps/details?id=co.triller.droid&hl=en_US' target='_blank'>
+              <Link href='/playstore' target='_blank'>
                 <IconButton className={classes.footerButton}>
                   <img className={classes.footerIcon} src={Google} alt='Download at the Goople Play Store'/>
                 </IconButton>
