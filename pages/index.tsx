@@ -62,6 +62,7 @@ import Youtube from '../assets/social/youtube.png'
 import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
+import Auditions1Video from '../assets/auditions-week1.jpg'
 import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
@@ -388,6 +389,25 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     filter: 'brightness(75%)',
   },
+  audition: {
+    maxWidth: 640,
+    width: '100%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'block',
+    position: 'relative',
+    marginBottom: '10vh',
+
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '15vh',
+    }
+  },
+  auditionsImg: {
+    width: '100%',
+    zIndex: 100,
+    cursor: 'pointer',
+    filter: 'brightness(50%)',
+  },
 }))
 
 export default () => {
@@ -400,6 +420,7 @@ export default () => {
   const [openMurda, setOpenMurda] = useState(false)
   const [openQuavo, setOpenQuavo] = useState(false)
 
+  const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
   const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
@@ -436,9 +457,21 @@ export default () => {
     },
   }
 
+  const opts2: any = {
+    width: '100%',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      controls: 1,
+      autoplay: isBelowSM ? 0 : 1,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+    },
+  }
+
   const modalOpts = {
     controls: 1,
-    autoplay: 1, //isBelowSM ? 1 : 0,
+    autoplay: isBelowSM ? 0 : 1,
     modestbranding: 1,
     playsinline: 1,
     rel: 0,
@@ -502,6 +535,31 @@ export default () => {
                   )
                 }
               </div>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                WEEK 1 AUDITIONS
+              </Typography>
+              <br/>
+            </Grid>
+            <Grid item xs={12}>
+              <div
+                className={classes.audition}
+              >
+                <div style={{ opacity: openAuditions1 || isBelowSM ? 0 : 1 }}>
+                  <img src={Auditions1Video} alt='WEEK 1 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions1(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  (openAuditions1 || isBelowSM) &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <ReactYouTube className={classes.video} videoId='Ix-6fRRae3g' opts={opts2}/>
+                    </div>
+                  )
+                }
+              </div>
+              <br/>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
