@@ -398,6 +398,8 @@ export default () => {
 
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
+  const [openQuavo, setOpenQuavo] = useState(false)
+
   const [openIntro, setOpenIntro] = useState(isBelowSM)
   const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
@@ -436,7 +438,7 @@ export default () => {
 
   const modalOpts = {
     controls: 1,
-    autoplay: isBelowSM ? 1 : 0,
+    autoplay: 1, //isBelowSM ? 1 : 0,
     modestbranding: 1,
     playsinline: 1,
     rel: 0,
@@ -547,13 +549,18 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+              <div className={classes.playable} onClick={() => setOpenQuavo(true)}>
+                <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openQuavo} videoId='ZM4DJRsU8kQ' onClose={() => setOpenQuavo(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>QUAVO</strong>
               </Typography>
-              <Typography variant='h6' align='center' className={classes.trillerHandle2}>
+              <Typography variant='h6' align='center' className={classes.trillerHandle2} onClick={() => setOpenQuavo(true)}>
                 <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@quavohuncho</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br/>
               <Typography variant='h6' align='center'>
