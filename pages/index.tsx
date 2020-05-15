@@ -361,7 +361,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     zIndex: 100,
     cursor: 'pointer',
-    filter: 'brightness(50%)',
+    filter: 'brightness(80%)',
   },
 
   introPlayIcon: {
@@ -406,7 +406,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     zIndex: 100,
     cursor: 'pointer',
-    filter: 'brightness(50%)',
+    filter: 'brightness(80%)',
   },
 }))
 
