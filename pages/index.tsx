@@ -611,7 +611,7 @@ export default () => {
                 <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
-              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openQuavo} videoId='ZM4DJRsU8kQ' onClose={() => setOpenQuavo(false)} />
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openQuavo} videoId='IQdyCPq8rT8' onClose={() => setOpenQuavo(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>QUAVO</strong>
