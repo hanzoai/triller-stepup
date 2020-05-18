@@ -313,6 +313,7 @@ const useStyles = makeStyles((theme) => ({
 
   trillerHandle2: {
     color: theme.palette.primary.main,
+    cursor: 'pointer'
   },
 
   trillerIcon: {
@@ -419,6 +420,7 @@ export default () => {
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
   const [openQuavo, setOpenQuavo] = useState(false)
+  const [openTakeoff, setOpenTakeoff] = useState(false)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
@@ -626,13 +628,18 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+              <div className={classes.playable} onClick={() => setOpenTakeoff(true)}>
+                <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openTakeoff} videoId='kYPs1X3NlJo' onClose={() => setOpenTakeoff(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>TAKEOFF</strong>
               </Typography>
-              <Typography variant='h6' align='center' className={classes.trillerHandle2}>
+              <Typography variant='h6' align='center' className={classes.trillerHandle2} onClick={() => setOpenTakeoff(true)}>
                 <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@yrntakeoff</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br />
               <Typography variant='h6' align='center'>
