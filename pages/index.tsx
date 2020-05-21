@@ -660,7 +660,7 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <div className={classes.playable} style={{ maxWidth: 400, marginLeft: 'auto', marginRight: 'auto' }} onClick={() => setOpenAmara(true)}>
+              <div className={classes.playable} style={{ maxWidth: 300, marginLeft: 'auto', marginRight: 'auto' }} onClick={() => setOpenAmara(true)}>
                 <img className={classes.amaraImg} src={Amara} alt='Amara'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
