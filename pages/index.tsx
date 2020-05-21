@@ -54,6 +54,7 @@ import JudgeStarrah from '../assets/judges/starrah.jpg'
 import JudgeMurda from '../assets/judges/murda.jpg'
 import JudgeQuavo from '../assets/judges/quavo.jpg'
 import JudgeTakeoff from '../assets/judges/takeoff.jpg'
+import Amara from '../assets/judges/amara.jpg'
 
 import Facebook from '../assets/social/facebook.png'
 import Twitter from '../assets/social/twitter.svg'
@@ -242,6 +243,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     width: '100%',
   },
+  amaraImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+  },
   footer: {
     paddingBottom: '10vh',
   },
@@ -421,6 +428,7 @@ export default () => {
   const [openMurda, setOpenMurda] = useState(false)
   const [openQuavo, setOpenQuavo] = useState(false)
   const [openTakeoff, setOpenTakeoff] = useState(false)
+  const [openAmara, setOpenAmara] = useState(false)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
@@ -646,7 +654,29 @@ export default () => {
                 Takeoff is a rapper, singer, and songwriter with several top 10 singles to his name as a member of Migos.
               </Typography>
             </Grid>
+            <Grid item xs={12}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                AMBASSADOR
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.playable} style={{ maxWidth: 400, marginLeft: 'auto', marginRight: 'auto' }} onClick={() => setOpenAmara(true)}>
+                <img className={classes.amaraImg} src={Amara} alt='Amara'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openAmara} videoId='BfB002W8CzY' onClose={() => setOpenAmara(false)} />
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>AMARA LA NEGRA</strong>
+              </Typography>
+              <Typography variant='h6' align='center' className={classes.trillerHandle2} onClick={() => setOpenAmara(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@amaralanegraaln</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
+              </Typography>
+              <br/>
+            </Grid>
           </Grid>
+
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
           <Grid container alignItems='center' spacing={4}>
