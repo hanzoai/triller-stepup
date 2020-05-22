@@ -548,7 +548,7 @@ export default () => {
                 }
               </div>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} md={6}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 WEEK 1 AUDITIONS
               </Typography>
@@ -570,8 +570,9 @@ export default () => {
                 }
               </div>
               <br/>
+              <br/>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} md={6}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 WEEK 2 AUDITIONS
               </Typography>
@@ -592,6 +593,7 @@ export default () => {
                   )
                 }
               </div>
+              <br/>
               <br/>
             </Grid>
             <Grid item xs={12}>
