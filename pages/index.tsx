@@ -548,38 +548,11 @@ export default () => {
                 }
               </div>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                WEEK 2 AUDITIONS
-              </Typography>
-              <br/>
-            </Grid>
-            <Grid item xs={12}>
-              <div
-                className={classes.audition}
-              >
-                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openAuditions2 || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
-                    </div>
-                  )
-                }
-              </div>
-              <br/>
-            </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 WEEK 1 AUDITIONS
               </Typography>
               <br/>
-            </Grid>
-            <Grid item xs={12}>
               <div
                 className={classes.audition}
               >
@@ -592,6 +565,29 @@ export default () => {
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
                       <ReactYouTube className={classes.video} videoId='Ix-6fRRae3g' opts={opts2}/>
+                    </div>
+                  )
+                }
+              </div>
+              <br/>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                WEEK 2 AUDITIONS
+              </Typography>
+              <br/>
+              <div
+                className={classes.audition}
+              >
+                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
+                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  (openAuditions2 || isBelowSM) &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
                     </div>
                   )
                 }
