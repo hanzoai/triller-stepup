@@ -64,6 +64,7 @@ import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
 import Auditions1Video from '../assets/auditions-week1.jpg'
+import Auditions2Video from '../assets/auditions-week2.jpg'
 import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
@@ -431,6 +432,7 @@ export default () => {
   const [openAmara, setOpenAmara] = useState(false)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
+  const [openAuditions2, setOpenAuditions2] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
   const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
@@ -545,6 +547,31 @@ export default () => {
                   )
                 }
               </div>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                WEEK 2 AUDITIONS
+              </Typography>
+              <br/>
+            </Grid>
+            <Grid item xs={12}>
+              <div
+                className={classes.audition}
+              >
+                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
+                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  (openAuditions2 || isBelowSM) &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
+                    </div>
+                  )
+                }
+              </div>
+              <br/>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
@@ -676,7 +703,6 @@ export default () => {
               <br/>
             </Grid>
           </Grid>
-
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
           <Grid container alignItems='center' spacing={4}>
