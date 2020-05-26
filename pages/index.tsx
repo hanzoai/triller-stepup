@@ -771,7 +771,7 @@ export default () => {
                   Auditions Close May 29th, 2020
                 </Typography>
 
-                <Countdown target='2020-05-29 12:59:59-04:00'/>
+                <Countdown target='2020-05-29 23:59:59-04:00'/>
 
                 <Typography variant='h6' align='center'>
                   Check back here on June 5th, 2020 to vote for your favorite contestant!
