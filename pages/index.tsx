@@ -422,9 +422,9 @@ const useStyles = makeStyles((theme) => ({
     filter: 'brightness(80%)',
   },
   wishpond: {
-    '& iframe': {
-      minHeight: 900,
-    },
+    // '& iframe': {
+    //   minHeight: 900,
+    // },
   },
 }))
 
