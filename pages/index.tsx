@@ -8,6 +8,7 @@ import {
   Grow,
   IconButton,
   Link,
+  NoSsr,
   Typography,
   Slide,
   useMediaQuery,
@@ -17,11 +18,15 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
+import Head from 'next/head'
+
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
 import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
+
+import classnames from 'classnames'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -416,6 +421,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     filter: 'brightness(80%)',
   },
+  wishpond: {
+    '& iframe': {
+      minHeight: 900,
+    },
+  },
 }))
 
 export default () => {
@@ -486,11 +496,14 @@ export default () => {
     playsinline: 1,
     rel: 0,
   }
-
   const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth+200}:${window.innerHeight}`
 
   return (
     <div>
+      <Head>
+        <script type="text/javascript" src="//cdn.wishpond.net/connect.js?merchantId=1505757&writeKey=4fc9f3731b69" async />
+      </Head>
+
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
           <div className={classes.stepUpLogo}>
@@ -519,58 +532,11 @@ export default () => {
           }
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
+          <NoSsr>
+            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2533521" data-wishpond-href="https://embedded.wishpondpages.com/lp/2533521/"/>
+          </NoSsr>
+
           <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item xs={12}>
-              <div
-                className={classes.intro}
-              >
-                <div style={{ opacity: openIntro || isBelowSM ? 0 : 1 }}>
-                  <img src={IntroVideo} alt='Intro to Triller StepUp' className={classes.introImg} onClick={() => setOpenIntro(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openIntro || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <Vimeo
-                        video='416390093'
-                        showTitle={false}
-                        showPortrait={false}
-                        sidedock={false}
-                        controls={false}
-                        responsive={true}
-                        autoplay={!isBelowSM && openIntro}
-                      />
-                    </div>
-                  )
-                }
-              </div>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                WEEK 1 AUDITIONS
-              </Typography>
-              <br/>
-            </Grid>
-            <Grid item xs={12}>
-              <div
-                className={classes.audition}
-              >
-                <div style={{ opacity: openAuditions1 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions1Video} alt='WEEK 1 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions1(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openAuditions1 || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='Ix-6fRRae3g' opts={opts2}/>
-                    </div>
-                  )
-                }
-              </div>
-              <br/>
-            </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
