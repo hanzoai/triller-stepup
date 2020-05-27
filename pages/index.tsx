@@ -422,9 +422,9 @@ const useStyles = makeStyles((theme) => ({
     filter: 'brightness(80%)',
   },
   wishpond: {
-    // '& iframe': {
-    //   minHeight: 900,
-    // },
+    '& iframe': {
+      minHeight: 900,
+    },
   },
 }))
 
@@ -534,6 +534,8 @@ export default () => {
         <Container className={classes.judges} maxWidth='lg'>
           <NoSsr>
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2533521" data-wishpond-href="https://embedded.wishpondpages.com/lp/2533521/"/>
+            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547132" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547132/"/>
+            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547133" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547133/"/>
           </NoSsr>
 
           <Grid container alignItems='flex-start' spacing={4}>
