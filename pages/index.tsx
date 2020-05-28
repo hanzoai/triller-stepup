@@ -316,12 +316,14 @@ const useStyles = makeStyles((theme) => ({
 
   trillerHandle: {
     color: theme.palette.primary.main,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    pointerEvents: 'none',
   },
 
   trillerHandle2: {
     color: theme.palette.primary.main,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    pointerEvents: 'none',
   },
 
   trillerIcon: {
@@ -343,18 +345,21 @@ const useStyles = makeStyles((theme) => ({
 
   playable: {
     position: 'relative',
-    cursor: 'pointer',
+    pointerEvents: 'none',
+    // cursor: 'pointer',
   },
 
   playIcon: {
     position: 'absolute',
     top: theme.spacing(1),
     right: theme.spacing(1),
+    display: 'none',
   },
 
   playable2: {
     transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
+    display: 'none',
   },
 
   intro: {
@@ -523,6 +528,20 @@ export default () => {
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                ANNOUNCING THE TOP 30
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Container maxWidth='md'>
+                <Typography variant='h4' align='center'>
+                  Voting Opens June 5th, 2020
+                </Typography>
+
+                <Countdown target='2020-06-05 23:59:59-04:00'/>
+              </Container>
+            </Grid>
+            <Grid item xs={12}>
               <div
                 className={classes.intro}
               >
@@ -548,8 +567,8 @@ export default () => {
                 }
               </div>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
+            <Grid item xs={12} md={4}>
+              <Typography variant='h4' align='center' className={classes.auditions}>
                 WEEK 1 AUDITIONS
               </Typography>
               <br/>
@@ -572,9 +591,33 @@ export default () => {
               <br/>
               <br/>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
+            <Grid item xs={12} md={4}>
+              <Typography variant='h4' align='center' className={classes.auditions}>
                 WEEK 2 AUDITIONS
+              </Typography>
+              <br/>
+              <div
+                className={classes.audition}
+              >
+                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
+                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
+                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
+                </div>
+                {
+                  (openAuditions2 || isBelowSM) &&
+                  (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
+                    </div>
+                  )
+                }
+              </div>
+              <br/>
+              <br/>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant='h4' align='center' className={classes.auditions}>
+                WEEK 3 AUDITIONS
               </Typography>
               <br/>
               <div
@@ -705,78 +748,29 @@ export default () => {
         <Container className={classes.apps} maxWidth='lg'>
           <Grid container alignItems='center' spacing={4}>
             <Grid item xs={12}>
-              <img className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                HOW TO AUDITION
-              </Typography>
               <br/>
-            </Grid>
-            <Grid item xs={12}>
-              <div
-                className={classes.howToContainer}
-              >
-                <div style={{ opacity: openHowTo || isBelowSM ? 0 : 1 }}>
-                  <img src={HowToVideo} alt='Intro to Triller StepUp' className={classes.howToImg2} onClick={() => setOpenHowTo(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openHowTo || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
-                    </div>
-                  )
-                }
-              </div>
               <br/>
-            </Grid>
-            <Grid item xs={12}>
+              <br/>
+              <br/>
               <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
             </Grid>
             <Grid item xs={6}>
               <Link href='/appstore' rel='nofollow' target='_blank'>
                 <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
               </Link>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
             </Grid>
             <Grid item xs={6}>
               <Link href='/playstore' rel='nofollow' target='_blank'>
                 <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
-            </Grid>
-            <Grid item xs={12}>
-              <Container maxWidth='sm'>
-                <Typography variant='h6' className={classes.directions}>
-                  <ol>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo1} alt='Step 1'/>
-                      Download and update Triller to enter. Make a profile using your email and connect your Instagram.
-                    </li>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo2} alt='Step 2'/>
-                      Select “Social” and record up to :90 seconds of any song of your choice.
-                    </li>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo3} alt='Step 3'/>
-                      Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!
-                    </li>
-                  </ol>
-                </Typography>
-              </Container>
-            </Grid>
-            <Grid item xs={12}>
-              <Container maxWidth='md'>
-                <Typography variant='h3' align='center' className={classes.auditions}>
-                  Auditions Close May 29th, 2020
-                </Typography>
-
-                <Countdown target='2020-05-29 23:59:59-04:00'/>
-
-                <Typography variant='h6' align='center'>
-                  Check back here on June 5th, 2020 to vote for your favorite contestant!
-                </Typography>
-              </Container>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
             </Grid>
           </Grid>
         </Container>
