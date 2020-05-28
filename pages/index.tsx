@@ -767,6 +767,7 @@ export default () => {
               <Link href='/playstore' rel='nofollow' target='_blank'>
                 <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
+
               <br/>
               <br/>
               <br/>
