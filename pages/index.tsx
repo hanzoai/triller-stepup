@@ -723,8 +723,8 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                AMBASSADOR
+              <Typography variant='h4' align='center' className={classes.auditions}>
+                BOOST MOBILE AMBASSADOR
               </Typography>
             </Grid>
             <Grid item xs={12}>
