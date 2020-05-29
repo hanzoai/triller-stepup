@@ -529,6 +529,9 @@ export default () => {
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
+                AUDITIONS NOW CLOSED
+              </Typography>
+              <Typography variant='h3' align='center' className={classes.auditions}>
                 ANNOUNCING THE TOP 30
               </Typography>
             </Grid>
