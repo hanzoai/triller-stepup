@@ -631,7 +631,7 @@ export default () => {
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
                 {
-                  (openAuditions2 || isBelowSM) &&
+                  (openAuditions3 || isBelowSM) &&
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
                       <ReactYouTube className={classes.video} videoId='0OazUXhN-yU' opts={opts2}/>
