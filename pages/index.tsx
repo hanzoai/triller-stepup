@@ -63,6 +63,7 @@ import Youtube from '../assets/social/youtube.png'
 import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
+import AuditionsClosed from '../assets/auditions-closed.png'
 import Auditions1Video from '../assets/auditions-week1.jpg'
 import Auditions2Video from '../assets/auditions-week2.jpg'
 import Auditions3Video from '../assets/auditions-week3.jpg'
@@ -506,7 +507,6 @@ export default () => {
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
           {
-            // <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
             // <Fade in={slide1} timeout={800}>
             //   <div>
             //     <Slide direction='right' in={slide1} timeout={500}>
@@ -530,9 +530,7 @@ export default () => {
         <Container maxWidth='md'>
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                AUDITIONS NOW CLOSED
-              </Typography>
+              <img className={classes.prizeImg} src={AuditionsClosed} alt='Auditions Closed'/>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 Top 30 Contestants Announced and Voting Begins June 5th, 2020
               </Typography>
