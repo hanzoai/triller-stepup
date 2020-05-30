@@ -65,6 +65,7 @@ import Google from '../assets/social/google.png'
 
 import Auditions1Video from '../assets/auditions-week1.jpg'
 import Auditions2Video from '../assets/auditions-week2.jpg'
+import Auditions3Video from '../assets/auditions-week3.jpg'
 import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
@@ -438,6 +439,7 @@ export default () => {
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openAuditions2, setOpenAuditions2] = useState(isBelowSM)
+  const [openAuditions3, setOpenAuditions3] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
   const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
@@ -503,8 +505,8 @@ export default () => {
           <div className={classes.stepUpLogo}>
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
-          <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           {
+            // <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
             // <Fade in={slide1} timeout={800}>
             //   <div>
             //     <Slide direction='right' in={slide1} timeout={500}>
@@ -525,23 +527,23 @@ export default () => {
             // </Fade>
           }
         </Container>
-        <Container className={classes.judges} maxWidth='lg'>
+        <Container maxWidth='md'>
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 AUDITIONS NOW CLOSED
               </Typography>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                ANNOUNCING THE TOP 30
+                Top 30 Contestants Announced and Voting Begins June 5th, 2020
               </Typography>
             </Grid>
+          </Grid>
+        </Container>
+        <Container className={classes.judges} maxWidth='lg'>
+          <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
               <Container maxWidth='md'>
-                <Typography variant='h4' align='center'>
-                  Voting Opens June 5th, 2020
-                </Typography>
-
-                <Countdown target='2020-06-05 23:59:59-04:00'/>
+                <Countdown target='2020-06-05 12:00:00-04:00'/>
               </Container>
             </Grid>
             <Grid item xs={12}>
@@ -626,15 +628,15 @@ export default () => {
               <div
                 className={classes.audition}
               >
-                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
+                <div style={{ opacity: openAuditions3 || isBelowSM ? 0 : 1 }}>
+                  <img src={Auditions3Video} alt='WEEK 3 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions3(true)}/>
                   <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
                 </div>
                 {
                   (openAuditions2 || isBelowSM) &&
                   (
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
+                      <ReactYouTube className={classes.video} videoId='0OazUXhN-yU' opts={opts2}/>
                     </div>
                   )
                 }
