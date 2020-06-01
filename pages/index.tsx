@@ -532,7 +532,7 @@ export default () => {
             <Grid item xs={12}>
               <img className={classes.prizeImg} src={AuditionsClosed} alt='Auditions Closed'/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                Top 30 Contestants Announced and Voting Begins June 5th, 2020
+                Top 30 Contestants Announced and Voting Begins Friday, 6/12
               </Typography>
             </Grid>
           </Grid>
@@ -541,7 +541,7 @@ export default () => {
           <Grid container alignItems='flex-start' spacing={4}>
             <Grid item xs={12}>
               <Container maxWidth='md'>
-                <Countdown target='2020-06-05 12:00:00-04:00'/>
+                <Countdown target='2020-06-12 12:00:00-04:00'/>
               </Container>
             </Grid>
             <Grid item xs={12}>
