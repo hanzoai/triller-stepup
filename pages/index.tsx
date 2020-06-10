@@ -532,18 +532,15 @@ export default () => {
             <Grid item xs={12}>
               <img className={classes.prizeImg} src={AuditionsClosed} alt='Auditions Closed'/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                Top 30 Contestants Announced and Voting Begins Friday, 6/12
+                We are taking a moment to pause on further announcements as we stand in solidarity with the Black community #blacklivesmatter #doitforfloyd
               </Typography>
+              <br/>
+              <br/>
             </Grid>
           </Grid>
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
           <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item xs={12}>
-              <Container maxWidth='md'>
-                <Countdown target='2020-06-12 12:00:00-04:00'/>
-              </Container>
-            </Grid>
             <Grid item xs={12}>
               <div
                 className={classes.intro}
