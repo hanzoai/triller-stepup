@@ -521,6 +521,11 @@ export default () => {
           <div className={classes.stepUpLogo}>
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
+          <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
+          <Typography variant='h3' align='center' className={classes.auditions}>
+            VOTE FOR YOUR FAVORITE ARTIST VIDEOS UNTIL 7/2
+          </Typography>
+          <Countdown target='2020-07-02 12:59:59-04:00'/>
           {
             // <Fade in={slide1} timeout={800}>
             //   <div>
@@ -549,7 +554,7 @@ export default () => {
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547133" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547133/"/>
           </NoSsr>
 
-          <Grid container alignItems='flex-start' alignContent='center' spacing={4}>
+          <Grid container alignItems='flex-start' justify='center' spacing={4}>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
