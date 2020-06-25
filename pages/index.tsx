@@ -59,6 +59,7 @@ import JudgeStarrah from '../assets/judges/starrah.jpg'
 import JudgeMurda from '../assets/judges/murda.jpg'
 import JudgeQuavo from '../assets/judges/quavo.jpg'
 import JudgeTakeoff from '../assets/judges/takeoff.jpg'
+import JudgeNija from '../assets/judges/nija.jpg'
 import Amara from '../assets/judges/amara.jpg'
 
 import Facebook from '../assets/social/facebook.png'
@@ -68,7 +69,10 @@ import Youtube from '../assets/social/youtube.png'
 import Apple from '../assets/social/apple.png'
 import Google from '../assets/social/google.png'
 
+import AuditionsClosed from '../assets/auditions-closed.png'
 import Auditions1Video from '../assets/auditions-week1.jpg'
+import Auditions2Video from '../assets/auditions-week2.jpg'
+import Auditions3Video from '../assets/auditions-week3.jpg'
 import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
@@ -320,12 +324,14 @@ const useStyles = makeStyles((theme) => ({
 
   trillerHandle: {
     color: theme.palette.primary.main,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    pointerEvents: 'none',
   },
 
   trillerHandle2: {
     color: theme.palette.primary.main,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    pointerEvents: 'none',
   },
 
   trillerIcon: {
@@ -347,18 +353,21 @@ const useStyles = makeStyles((theme) => ({
 
   playable: {
     position: 'relative',
-    cursor: 'pointer',
+    pointerEvents: 'none',
+    // cursor: 'pointer',
   },
 
   playIcon: {
     position: 'absolute',
     top: theme.spacing(1),
     right: theme.spacing(1),
+    display: 'none',
   },
 
   playable2: {
     transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
+    display: 'none',
   },
 
   intro: {
@@ -434,6 +443,7 @@ export default () => {
   const theme = useTheme()
   const isBelowSM = useMediaQuery(theme.breakpoints.down('sm'))
 
+  const [openNija, setOpenNija] = useState(false)
   const [openStarrah, setOpenStarrah] = useState(false)
   const [openMurda, setOpenMurda] = useState(false)
   const [openQuavo, setOpenQuavo] = useState(false)
@@ -441,6 +451,8 @@ export default () => {
   const [openAmara, setOpenAmara] = useState(false)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
+  const [openAuditions2, setOpenAuditions2] = useState(isBelowSM)
+  const [openAuditions3, setOpenAuditions3] = useState(isBelowSM)
   const [openIntro, setOpenIntro] = useState(isBelowSM)
   const [openHowTo, setOpenHowTo] = useState(isBelowSM)
 
@@ -509,7 +521,6 @@ export default () => {
           <div className={classes.stepUpLogo}>
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
-          <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           {
             // <Fade in={slide1} timeout={800}>
             //   <div>
@@ -538,13 +549,32 @@ export default () => {
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547133" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547133/"/>
           </NoSsr>
 
-          <Grid container alignItems='flex-start' spacing={4}>
+          <Grid container alignItems='flex-start' alignContent='center' spacing={4}>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
                 MEET YOUR HOSTS & JUDGES
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
+              <div className={classes.playable} onClick={() => setOpenNija(true)}>
+                <img className={classes.judgeImg} src={JudgeNija} alt='NIJA'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openNija} videoId='kBQYcmMxXpI' onClose={() => setOpenNija(false)} />
+              <br />
+              <Typography variant='h4' align='center'>
+                <strong>NIJA</strong>
+              </Typography>
+              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenNija(true)}>
+                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@amnija_</strong>
+                <PlayCircleOutlineIcon className={classes.playable2}/>
+              </Typography>
+              <br />
+              <Typography variant='h6' align='center'>
+                7x Grammy-nominated American songwriter and record producer Nija Charles, most known for her work with Beyonce and Jay-Z, Cardi B and Chris Brown, is behind some of the most popular songs, released in the past couple of years.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
               <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
                 <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -565,7 +595,7 @@ export default () => {
                 Cabello and “Girls Like You” by Maroon 5) and five peaking in the top 10.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div className={classes.playable} onClick={() => setOpenMurda(true)}>
                 <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -584,7 +614,7 @@ export default () => {
                 Murda Beatz has produced numerous hit singles for top rappers including Travis Scott, Gucci Mane, Drake, Migos, and 6ix9ine, alongside frequent collaborators Cubeatz.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div className={classes.playable} onClick={() => setOpenQuavo(true)}>
                 <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -603,7 +633,7 @@ export default () => {
                 Quavo is a rapper, singer, songwriter, and record producer, best known as a member of Migos and has numerous hits that have made the top 10 of the Billboard Hot 100 with Migos and other collaborations.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <div className={classes.playable} onClick={() => setOpenTakeoff(true)}>
                 <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -623,8 +653,8 @@ export default () => {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                AMBASSADOR
+              <Typography variant='h4' align='center' className={classes.auditions}>
+                BOOST MOBILE AMBASSADOR
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -644,83 +674,34 @@ export default () => {
               <br/>
             </Grid>
           </Grid>
-
         </Container>
         <Container className={classes.apps} maxWidth='lg'>
           <Grid container alignItems='center' spacing={4}>
             <Grid item xs={12}>
-              <img className={classes.callAllArtistImg} src={CallingAllArtists} alt='Calling All Aspiring Artists'/>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                HOW TO AUDITION
-              </Typography>
               <br/>
-            </Grid>
-            <Grid item xs={12}>
-              <div
-                className={classes.howToContainer}
-              >
-                <div style={{ opacity: openHowTo || isBelowSM ? 0 : 1 }}>
-                  <img src={HowToVideo} alt='Intro to Triller StepUp' className={classes.howToImg2} onClick={() => setOpenHowTo(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openHowTo || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='-qCKD-9jPew' opts={opts}/>
-                    </div>
-                  )
-                }
-              </div>
               <br/>
-            </Grid>
-            <Grid item xs={12}>
+              <br/>
+              <br/>
               <img className={classes.downloadNowImg} src={DownloadNow} alt='Download Triller App Now'/>
             </Grid>
             <Grid item xs={6}>
               <Link href='/appstore' rel='nofollow' target='_blank'>
                 <img className={classes.appStoreImg} src={AppStore} alt='Download on the AppStore'/>
               </Link>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
             </Grid>
             <Grid item xs={6}>
               <Link href='/playstore' rel='nofollow' target='_blank'>
                 <img className={classes.playStoreImg} src={PlayStore} alt='Get It On Google Play'/>
               </Link>
-            </Grid>
-            <Grid item xs={12}>
-              <Container maxWidth='sm'>
-                <Typography variant='h6' className={classes.directions}>
-                  <ol>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo1} alt='Step 1'/>
-                      Download and update Triller to enter. Make a profile using your email and connect your Instagram.
-                    </li>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo2} alt='Step 2'/>
-                      Select “Social” and record up to :90 seconds of any song of your choice.
-                    </li>
-                    <li>
-                      <img className={classes.howToImg} src={HowTo3} alt='Step 3'/>
-                      Use the hashtags <span className={classes.hashtags}>#stepup #audition #boostxtriller</span> and tag <span className={classes.hashtags}>@stepup</span> to post!
-                    </li>
-                  </ol>
-                </Typography>
-              </Container>
-            </Grid>
-            <Grid item xs={12}>
-              <Container maxWidth='md'>
-                <Typography variant='h3' align='center' className={classes.auditions}>
-                  Auditions Close May 29th, 2020
-                </Typography>
 
-                <Countdown target='2020-05-29 12:59:59-04:00'/>
-
-                <Typography variant='h6' align='center'>
-                  Check back here on June 5th, 2020 to vote for your favorite contestant!
-                </Typography>
-              </Container>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
             </Grid>
           </Grid>
         </Container>
