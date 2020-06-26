@@ -598,7 +598,7 @@ const VoteCard = ({
               <TextField
                 variant='outlined'
                 size='small'
-                value={`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`}
+                value={`https://www.triller.co/stepup/?vote=${handle}`}
                 fullWidth
                 InputProps={{
                   endAdornment: (
@@ -607,7 +607,7 @@ const VoteCard = ({
                         aria-label='copy'
                         onClick={() => {
                           setCopied(true)
-                          copy(`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`)
+                          copy(`https://www.triller.co/stepup/?vote=${handle}`)
                         }}
                       >
                         { copied ? <CheckIcon/> : <AssignmentIcon/> }
