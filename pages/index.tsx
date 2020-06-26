@@ -73,6 +73,7 @@ import JudgeQuavo from '../assets/judges/quavo.jpg'
 import JudgeTakeoff from '../assets/judges/takeoff.jpg'
 import JudgeNija from '../assets/judges/nija.jpg'
 import Amara from '../assets/judges/amara.jpg'
+import Top30 from '../assets/top30.png'
 
 import Facebook from '../assets/social/facebook.png'
 import Twitter from '../assets/social/twitter.svg'
@@ -282,6 +283,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   amaraImg: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+  },
+  top30Img: {
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -687,6 +694,7 @@ export default () => {
   const [openQuavo, setOpenQuavo] = useState(false)
   const [openTakeoff, setOpenTakeoff] = useState(false)
   const [openAmara, setOpenAmara] = useState(false)
+  const [openTop30, setOpenTop30] = useState(false)
 
   const [voted, setVoted] = useState(v)
 
@@ -950,6 +958,19 @@ export default () => {
                 <PlayCircleOutlineIcon className={classes.playable2}/>
               </Typography>
               <br/>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant='h4' align='center' className={classes.auditions}>
+                TOP 30 FINALISTS
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.playable} style={{ maxWidth: 300, marginLeft: 'auto', marginRight: 'auto' }} onClick={() => setOpenTop30(true)}>
+                <img className={classes.top30Img} src={Top30} alt='Top 30'/>
+                <PlayCircleOutlineIcon className={classes.playIcon}/>
+              </div>
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openTop30} videoId='hWYQm7IrPs0' onClose={() => setOpenTop30(false)} />
+              <br />
             </Grid>
           </Grid>
         </Container>
