@@ -491,7 +491,6 @@ const VoteCard = ({
     playsinline: 1,
     rel: 0,
   }
-  console.log('voted', voted)
 
   return (
     <>
