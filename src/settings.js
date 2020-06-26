@@ -6,5 +6,5 @@ export const HANZO_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY1N
 export const NEWSLETTER_FORM_ID = 'kDu257WxFb9EoD'
 
 // export const VOTING_ENDPOINT = 'https://triller-voting.hanzo.ai/'
-export const VOTING_ENDPOINT = 'http://35.239.123.9'
+export const VOTING_ENDPOINT = 'https://vote.trillerfest.com'
 
