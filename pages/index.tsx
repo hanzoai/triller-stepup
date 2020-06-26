@@ -23,6 +23,7 @@ import {
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import AssignmentIcon from '@material-ui/icons/Assignment'
 
 import Head from 'next/head'
 
@@ -522,7 +523,6 @@ const VoteCard = ({
                   <IconButton
                     aria-label='copy'
                   >
-
                   </IconButton>
                 </InputAdornment>
               )
