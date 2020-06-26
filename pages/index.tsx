@@ -494,8 +494,7 @@ const useStyles = makeStyles((theme) => ({
   },
   voteHighlight: {
     transform: 'scale(1.10)',
-    borderWidth: '8px !important',
-    borderColor: '#E81A7B',
+    border: '8px solid #E81A7B',
   },
   votePicked: {
     position: 'absolute',
@@ -516,7 +515,7 @@ const VoteCard = ({
   picked,
 }) => {
   const classes = useStyles()
-  const [open, setOpen] = useState(highlight)
+  const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
   const theme = useTheme()
 
@@ -529,135 +528,136 @@ const VoteCard = ({
   }
 
   const imgLink = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
-  // console.log('imgLink', youtubeId)
-  // console.log('imgLink', imgLink, youtubeId)
+  console.log('h', highlight, handle)
 
   return (
     <>
-      <Card className={classnames(classes.voteCard,{ [classes.voteHighlight]: highlight })}>
-        <NoSsr>
-          <CardMedia className={classes.voteCardMedia} image={imgLink} title={handle} onClick={async () => {
-            setOpen(true)
-            try {
-              await fetch(VOTING_ENDPOINT + '/views/' + handle, {
-                method: 'POST', // or 'PUT'
-              })
-            } catch (e) {
-              console.log('voting error has occured', e)
-            }
-          }}>
-            <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
-          </CardMedia>
-        </NoSsr>
-        <CardContent>
-          <Typography variant='body1' align='center' className={classes.trillerHandle2}>
-            <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
-            <br/>
-            <br/>
-          </Typography>
-          {
-            voted ? (
-              <Typography variant='body1' align='center'>
-                Thank You For Voting Today
-                <br/>
-                <br/>
-              </Typography>
-            ) : (
-              <>
-                {
-                  // <TextField label='Email' variant='outlined' size='small' fullWidth/>
-                  // <br/>
-                  // <br/>
-                }
-                  <Button variant='outlined' fullWidth onClick={async () => {
-                    if (typeof window !== 'undefined') {
-                      let t = localstory(window.localStorage ?? window.sessionStorage, 'triller')
-                      t.set('voted', handle, { ttl: '24h' })
-                    }
-                    try {
-                      await fetch(VOTING_ENDPOINT + '/votes/' + handle, {
-                        method: 'POST', // or 'PUT'
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                          id: id,
-                        }),
-                      })
-                    } catch (e) {
-                      console.log('voting error has occured', e)
-                    }
-                    setVoted(true)
-                  }}>
-                  VOTE
-                </Button>
-                <br/>
-                <br/>
-              </>
-            )
-          }
-          <Typography variant='body2'>
-            Share with you friends:
-          </Typography>
-          {
-            typeof window !== 'undefined' && (
-
-              <TextField
-                variant='outlined'
-                size='small'
-                value={`https://www.triller.co/stepup/?vote=${handle}`}
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label='copy'
-                        onClick={() => {
-                          setCopied(true)
-                          copy(`https://www.triller.co/stepup/?vote=${handle}`)
-                        }}
-                      >
-                        { copied ? <CheckIcon/> : <AssignmentIcon/> }
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            )
-          }
-          {
-            picked && (
-              <div>
-                <Typography variant='h6' className={classes.votePicked}>
-                  <strong>YOUR VOTE</strong>
-                  <CheckIcon style={{ transform: 'translate(2px, 4px)' }}/>
+      <div className={highlight && classes.voteHighlight}>
+        <Card className={classes.voteCard}>
+          <NoSsr>
+            <CardMedia className={classes.voteCardMedia} image={imgLink} title={handle} onClick={async () => {
+              setOpen(true)
+              try {
+                await fetch(VOTING_ENDPOINT + '/views/' + handle, {
+                  method: 'POST', // or 'PUT'
+                })
+              } catch (e) {
+                console.log('voting error has occured', e)
+              }
+            }}>
+              <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
+            </CardMedia>
+          </NoSsr>
+          <CardContent>
+            <Typography variant='body1' align='center' className={classes.trillerHandle2}>
+              <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
+              <br/>
+              <br/>
+            </Typography>
+            {
+              voted ? (
+                <Typography variant='body1' align='center'>
+                  Thank You For Voting Today
+                  <br/>
+                  <br/>
                 </Typography>
-              </div>
-            )
-          }
-          {
-            // <br/>
-            // <br/>
-            // <Grid container alignItems='center' justify='center'>
-            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
-            //     <FacebookMessengerShareButton url='https://stepup.triller.co' appId='1432768656951037'>
-            //       <FacebookIcon size={32} round={true}/>
-            //     </FacebookMessengerShareButton>
-            //   </Grid>
-            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
-            //     <FacebookShareButton url='https://stepup.triller.co'>
-            //       <FacebookMessengerIcon size={32} round={true}/>
-            //     </FacebookShareButton>
-            //   </Grid>
-            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
-            //     <TwitterShareButton url='https://stepup.triller.co'>
-            //       <TwitterIcon size={32} round={true}/>
-            //     </TwitterShareButton>
-            //   </Grid>
-            // </Grid>
-          }
-        </CardContent>
-      </Card>
+              ) : (
+                <>
+                  {
+                    // <TextField label='Email' variant='outlined' size='small' fullWidth/>
+                    // <br/>
+                    // <br/>
+                  }
+                    <Button variant='outlined' fullWidth onClick={async () => {
+                      if (typeof window !== 'undefined') {
+                        let t = localstory(window.localStorage ?? window.sessionStorage, 'triller')
+                        t.set('voted', handle, { ttl: '24h' })
+                      }
+                      try {
+                        await fetch(VOTING_ENDPOINT + '/votes/' + handle, {
+                          method: 'POST', // or 'PUT'
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            id: id,
+                          }),
+                        })
+                      } catch (e) {
+                        console.log('voting error has occured', e)
+                      }
+                      setVoted(true)
+                    }}>
+                    VOTE
+                  </Button>
+                  <br/>
+                  <br/>
+                </>
+              )
+            }
+            <Typography variant='body2'>
+              Share with you friends:
+            </Typography>
+            {
+              typeof window !== 'undefined' && (
+
+                <TextField
+                  variant='outlined'
+                  size='small'
+                  value={`https://www.triller.co/stepup/?vote=${handle}`}
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label='copy'
+                          onClick={() => {
+                            setCopied(true)
+                            copy(`https://www.triller.co/stepup/?vote=${handle}`)
+                          }}
+                        >
+                          { copied ? <CheckIcon/> : <AssignmentIcon/> }
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              )
+            }
+            {
+              picked && (
+                <div>
+                  <Typography variant='h6' className={classes.votePicked}>
+                    <strong>YOUR VOTE</strong>
+                    <CheckIcon style={{ transform: 'translate(2px, 4px)' }}/>
+                  </Typography>
+                </div>
+              )
+            }
+            {
+              // <br/>
+              // <br/>
+              // <Grid container alignItems='center' justify='center'>
+              //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+              //     <FacebookMessengerShareButton url='https://stepup.triller.co' appId='1432768656951037'>
+              //       <FacebookIcon size={32} round={true}/>
+              //     </FacebookMessengerShareButton>
+              //   </Grid>
+              //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+              //     <FacebookShareButton url='https://stepup.triller.co'>
+              //       <FacebookMessengerIcon size={32} round={true}/>
+              //     </FacebookShareButton>
+              //   </Grid>
+              //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+              //     <TwitterShareButton url='https://stepup.triller.co'>
+              //       <TwitterIcon size={32} round={true}/>
+              //     </TwitterShareButton>
+              //   </Grid>
+              // </Grid>
+            }
+          </CardContent>
+        </Card>
+      </div>
       <ModalVideo channel='youtube' youtube={modalOpts} ratio={'16:9'} isOpen={open} videoId={youtubeId} onClose={() => setOpen(false)} />
     </>
   )
@@ -723,20 +723,22 @@ export default () => {
   // }, [])
 
 
-  if (typeof window !== 'undefined' && !sharedHandle) {
-    const urlParams = new URLSearchParams(window.location.search);
-    sharedHandle = urlParams.get('vote') ?? ''
-    if(sharedHandle) {
-      setTimeout(() => {
-        Scroll.scroller.scrollTo(sharedHandle, {
-          duration: 1000,
-          delay: 100,
-          smooth: true,
-          offset: -100, // Scrolls to element + 50 pixels down the page
-        })
-      }, 200)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !sharedHandle) {
+      const urlParams = new URLSearchParams(window.location.search);
+      sharedHandle = urlParams.get('vote') ?? ''
+      if(sharedHandle) {
+        setTimeout(() => {
+          Scroll.scroller.scrollTo(sharedHandle, {
+            duration: 1000,
+            delay: 100,
+            smooth: true,
+            offset: -100, // Scrolls to element + 50 pixels down the page
+          })
+        }, 200)
+      }
     }
-  }
+  }, [])
 
   const ratio = 812/375
 
