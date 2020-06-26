@@ -1,4 +1,6 @@
 import {
+  Card,
+  CardContent,
   Container,
   ExpansionPanel,
   ExpansionPanelSummary,
@@ -27,6 +29,7 @@ import ReactYouTube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
 
 import classnames from 'classnames'
+import voting from '../src/config/voting'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -435,7 +438,27 @@ const useStyles = makeStyles((theme) => ({
       minHeight: 900,
     },
   },
+  voteCard: {
+    '& img': {
+      width: '100%',
+      display: 'block',
+    }
+  }
 }))
+
+const VoteCard = ({
+  handle,
+  youtubeId,
+  className,
+}) => {
+  return (
+    <Card className={className}>
+      <CardContent>
+        <img src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} alt={handle}/>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default () => {
   const classes = useStyles()
@@ -547,12 +570,19 @@ export default () => {
           }
         </Container>
         <Container className={classes.judges} maxWidth='lg'>
-          <NoSsr>
-            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2533521" data-wishpond-href="https://embedded.wishpondpages.com/lp/2533521/"/>
-            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547132" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547132/"/>
-            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547133" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547133/"/>
-            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2554604" data-wishpond-href="https://embedded.wishpondpages.com/lp/2554604/"/>
-          </NoSsr>
+
+
+          <Grid container alignItems='flex-start' justify='center' spacing={4}>
+            {
+              voting.map((v) => {
+                return (
+                  <Grid item xs={12} sm={6} md={3} key={v.handle}>
+                    <VoteCard handle={v.handle} youtubeId={v.youtube} className={classes.voteCard}/>
+                  </Grid>
+                )
+              })
+            }
+          </Grid>
 
           <Grid container alignItems='flex-start' justify='center' spacing={4}>
             <Grid item xs={12}>
