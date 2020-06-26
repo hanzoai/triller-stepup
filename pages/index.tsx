@@ -523,7 +523,7 @@ export default () => {
           </div>
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           <Typography variant='h3' align='center' className={classes.auditions}>
-            VOTE FOR YOUR FAVORITE ARTIST 1/DAY UNTIL THE CLOCK RUNS OUT
+            VOTE FOR YOUR FAVORITE ARTIST VIDEOS UNTIL 7/2
           </Typography>
           {
             // <Fade in={slide1} timeout={800}>
@@ -555,6 +555,11 @@ export default () => {
 
           <Grid container alignItems='flex-start' justify='center' spacing={4}>
             <Grid item xs={12}>
+              <br/>
+              <br/>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                VOTE FOR YOUR FAVORITE ARTIST 1/DAY UNTIL THE CLOCK RUNS OUT
+              </Typography>
               <Countdown target='2020-07-02 12:59:59-04:00'/>
             </Grid>
             <Grid item xs={12}>
