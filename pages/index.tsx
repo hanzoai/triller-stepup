@@ -551,6 +551,7 @@ export default () => {
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2533521" data-wishpond-href="https://embedded.wishpondpages.com/lp/2533521/"/>
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547132" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547132/"/>
             <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2547133" data-wishpond-href="https://embedded.wishpondpages.com/lp/2547133/"/>
+            <div className={classnames(classes.wishpond, 'wishpond-campaign')} data-wishpond-id="2554604" data-wishpond-href="https://embedded.wishpondpages.com/lp/2554604/"/>
           </NoSsr>
 
           <Grid container alignItems='flex-start' justify='center' spacing={4}>
