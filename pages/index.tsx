@@ -87,6 +87,7 @@ import Auditions2Video from '../assets/auditions-week2.jpg'
 import Auditions3Video from '../assets/auditions-week3.jpg'
 import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
+import VoteFor from '../assets/vote_for.png'
 
 import faqConfig from '../src/config/faq'
 import {VOTING_ENDPOINT} from '../src/settings'
@@ -512,8 +513,6 @@ const VoteCard = ({
   const [copied, setCopied] = useState(false)
   const theme = useTheme()
 
-  console.log('highlight', handle, highlight, classnames(classes.voteCard,{ [classes.voteHighlight]: highlight }))
-
   const modalOpts = {
     controls: 1,
     autoplay: 1,
@@ -522,21 +521,27 @@ const VoteCard = ({
     rel: 0,
   }
 
+  const imgLink = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+  // console.log('imgLink', youtubeId)
+  // console.log('imgLink', imgLink, youtubeId)
+
   return (
     <>
       <Card className={classnames(classes.voteCard,{ [classes.voteHighlight]: highlight })}>
-        <CardMedia className={classes.voteCardMedia} image={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} title={handle} onClick={async () => {
-          setOpen(true)
-          try {
-            await fetch(VOTING_ENDPOINT + '/views/' + handle, {
-              method: 'POST', // or 'PUT'
-            })
-          } catch (e) {
-            console.log('voting error has occured', e)
-          }
-        }}>
-          <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
-        </CardMedia>
+        <NoSsr>
+          <CardMedia className={classes.voteCardMedia} image={imgLink} title={handle} onClick={async () => {
+            setOpen(true)
+            try {
+              await fetch(VOTING_ENDPOINT + '/views/' + handle, {
+                method: 'POST', // or 'PUT'
+              })
+            } catch (e) {
+              console.log('voting error has occured', e)
+            }
+          }}>
+            <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
+          </CardMedia>
+        </NoSsr>
         <CardContent>
           <Typography variant='body1' align='center' className={classes.trillerHandle2}>
             <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
@@ -773,10 +778,11 @@ export default () => {
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
-          <Typography variant='h3' align='center' className={classes.auditions}>
-            VOTE FOR YOUR FAVORITE ARTIST VIDEOS
-          </Typography>
+          <img className={classes.prizeImg} src={VoteFor} alt='VOTE FOR YOUR FAVORITE ARTIST VIDEOS' style={{marginTop: 8}}/>
           {
+            // <Typography variant='h3' align='center' className={classes.auditions}>
+            //   VOTE FOR YOUR FAVORITE ARTIST VIDEOS
+            // </Typography>
             // <Fade in={slide1} timeout={800}>
             //   <div>
             //     <Slide direction='right' in={slide1} timeout={500}>
