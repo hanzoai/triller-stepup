@@ -843,7 +843,7 @@ export default () => {
                 MEET YOUR HOSTS & JUDGES
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenNija(true)}>
                 <img className={classes.judgeImg} src={JudgeNija} alt='NIJA'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -862,28 +862,30 @@ export default () => {
                 7x Grammy-nominated American songwriter and record producer Nija Charles, most known for her work with Beyonce and Jay-Z, Cardi B and Chris Brown, is behind some of the most popular songs, released in the past couple of years.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
-                <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
-                <PlayCircleOutlineIcon className={classes.playIcon}/>
-              </div>
-              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openStarrah} videoId='kBQYcmMxXpI' onClose={() => setOpenStarrah(false)} />
-              <br />
-              <Typography variant='h4' align='center'>
-                <strong>STARRAH</strong>
-              </Typography>
-              <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenStarrah(true)}>
-                <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
-                <PlayCircleOutlineIcon className={classes.playable2}/>
-              </Typography>
-              <br />
-              <Typography variant='h6' align='center'>
-                Starrah has written 14 singles that have reached the Top 20 on the
-                Billboard Hot 100;  two of which went No. 1 (“Havana” by Camila
-                Cabello and “Girls Like You” by Maroon 5) and five peaking in the top 10.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            {
+            // <Grid item xs={12} sm={6} md={4}>
+            //   <div className={classes.playable} onClick={() => setOpenStarrah(true)}>
+            //     <img className={classes.judgeImg} src={JudgeStarrah} alt='STARRAH'/>
+            //     <PlayCircleOutlineIcon className={classes.playIcon}/>
+            //   </div>
+            //   <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openStarrah} videoId='kBQYcmMxXpI' onClose={() => setOpenStarrah(false)} />
+            //   <br />
+            //   <Typography variant='h4' align='center'>
+            //     <strong>STARRAH</strong>
+            //   </Typography>
+            //   <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpenStarrah(true)}>
+            //     <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@whereisstarrah</strong>
+            //     <PlayCircleOutlineIcon className={classes.playable2}/>
+            //   </Typography>
+            //   <br />
+            //   <Typography variant='h6' align='center'>
+            //     Starrah has written 14 singles that have reached the Top 20 on the
+            //     Billboard Hot 100;  two of which went No. 1 (“Havana” by Camila
+            //     Cabello and “Girls Like You” by Maroon 5) and five peaking in the top 10.
+            //   </Typography>
+            // </Grid>
+            }
+            <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenMurda(true)}>
                 <img className={classes.judgeImg} src={JudgeMurda} alt='MURDA BEATZ'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -902,7 +904,7 @@ export default () => {
                 Murda Beatz has produced numerous hit singles for top rappers including Travis Scott, Gucci Mane, Drake, Migos, and 6ix9ine, alongside frequent collaborators Cubeatz.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenQuavo(true)}>
                 <img className={classes.judgeImg} src={JudgeQuavo} alt='QUAVO'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
@@ -921,7 +923,7 @@ export default () => {
                 Quavo is a rapper, singer, songwriter, and record producer, best known as a member of Migos and has numerous hits that have made the top 10 of the Billboard Hot 100 with Migos and other collaborations.
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={3}>
               <div className={classes.playable} onClick={() => setOpenTakeoff(true)}>
                 <img className={classes.judgeImg} src={JudgeTakeoff} alt='TAKEOFF'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
