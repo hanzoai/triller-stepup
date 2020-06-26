@@ -1,4 +1,8 @@
 import {
+  Button,
+  Card,
+  CardMedia,
+  CardContent,
   Container,
   ExpansionPanel,
   ExpansionPanelSummary,
@@ -7,7 +11,10 @@ import {
   Grid,
   Grow,
   IconButton,
+  InputAdornment,
   Link,
+  NoSsr,
+  TextField,
   Typography,
   Slide,
   useMediaQuery,
@@ -16,12 +23,22 @@ import {
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import AssignmentIcon from '@material-ui/icons/Assignment'
+import CheckIcon from '@material-ui/icons/Check'
+
+import Head from 'next/head'
 
 import React, { useEffect, useState } from 'react'
 import HTMLComment from 'react-html-comment'
 import ModalVideo from 'react-modal-video'
 import ReactYouTube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
+
+import localstory from 'localstory'
+import { nanoid } from 'nanoid'
+
+import classnames from 'classnames'
+import voting from '../src/config/voting'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -72,6 +89,22 @@ import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
 import faqConfig from '../src/config/faq'
+import {VOTING_ENDPOINT} from '../src/settings'
+import copy from 'copy-to-clipboard'
+import * as Scroll from 'react-scroll'
+
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from 'react-share'
+
+let id: string
+let picked: string
+let sharedHandle: string
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -320,13 +353,13 @@ const useStyles = makeStyles((theme) => ({
   trillerHandle: {
     color: theme.palette.primary.main,
     cursor: 'pointer',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
 
   trillerHandle2: {
     color: theme.palette.primary.main,
     cursor: 'pointer',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
 
   trillerIcon: {
@@ -425,9 +458,209 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     filter: 'brightness(80%)',
   },
+  wishpond: {
+    '& iframe': {
+      minHeight: 900,
+    },
+  },
+  voteCard: {
+    border: '1px solid white',
+    '&:hover': {
+      border: '1px solid #E81A7B',
+    },
+    background: 'transparent',
+    position: 'relative',
+  },
+  voteCardMedia: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    position: 'relative',
+    cursor: 'pointer',
+  },
+  voteCardPlayButton: {
+    display: 'block',
+    left: '50%',
+    top: '50%',
+    position: 'absolute',
+    transform: 'translate(-50%, -50%) scale(1.5)',
+  },
+  voteHighlight: {
+    transform: 'scale(1.10)',
+    borderWidth: '8px !important',
+    borderColor: '#E81A7B',
+  },
+  votePicked: {
+    position: 'absolute',
+    right: theme.spacing(2),
+    top: theme.spacing(2),
+  },
 }))
 
+const VoteCard = ({
+  voted,
+  setVoted,
+  handle,
+  youtubeId,
+  highlight,
+  picked,
+}) => {
+  const classes = useStyles()
+  const [open, setOpen] = useState(highlight)
+  const [copied, setCopied] = useState(false)
+  const theme = useTheme()
+
+  console.log('highlight', handle, highlight, classnames(classes.voteCard,{ [classes.voteHighlight]: highlight }))
+
+  const modalOpts = {
+    controls: 1,
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+  }
+
+  return (
+    <>
+      <Card className={classnames(classes.voteCard,{ [classes.voteHighlight]: highlight })}>
+        <CardMedia className={classes.voteCardMedia} image={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} title={handle} onClick={async () => {
+          setOpen(true)
+          try {
+            await fetch(VOTING_ENDPOINT + '/views/' + handle, {
+              method: 'POST', // or 'PUT'
+            })
+          } catch (e) {
+            console.log('voting error has occured', e)
+          }
+        }}>
+          <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
+        </CardMedia>
+        <CardContent>
+          <Typography variant='body1' align='center' className={classes.trillerHandle2}>
+            <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
+            <br/>
+            <br/>
+          </Typography>
+          {
+            voted ? (
+              <Typography variant='body1' align='center'>
+                Thank You For Voting Today
+                <br/>
+                <br/>
+              </Typography>
+            ) : (
+              <>
+                {
+                  // <TextField label='Email' variant='outlined' size='small' fullWidth/>
+                  // <br/>
+                  // <br/>
+                }
+                  <Button variant='outlined' fullWidth onClick={async () => {
+                    if (typeof window !== 'undefined') {
+                      let t = localstory(window.localStorage ?? window.sessionStorage, 'triller')
+                      t.set('voted', handle, { ttl: '24h' })
+                    }
+                    try {
+                      await fetch(VOTING_ENDPOINT + '/votes/' + handle, {
+                        method: 'POST', // or 'PUT'
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          id: id,
+                        }),
+                      })
+                    } catch (e) {
+                      console.log('voting error has occured', e)
+                    }
+                    setVoted(true)
+                  }}>
+                  VOTE
+                </Button>
+                <br/>
+                <br/>
+              </>
+            )
+          }
+          <Typography variant='body2'>
+            Share with you friends:
+          </Typography>
+          {
+            typeof window !== 'undefined' && (
+
+              <TextField
+                variant='outlined'
+                size='small'
+              value={`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`}
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label='copy'
+                        onClick={() => {
+                          setCopied(true)
+                          copy(`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`)
+                        }}
+                      >
+                        { copied ? <CheckIcon/> : <AssignmentIcon/> }
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
+              />
+            )
+          }
+          {
+            picked && ( <CheckIcon className={classes.votePicked}/> )
+          }
+          {
+            // <br/>
+            // <br/>
+            // <Grid container alignItems='center' justify='center'>
+            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+            //     <FacebookMessengerShareButton url='https://stepup.triller.co' appId='1432768656951037'>
+            //       <FacebookIcon size={32} round={true}/>
+            //     </FacebookMessengerShareButton>
+            //   </Grid>
+            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+            //     <FacebookShareButton url='https://stepup.triller.co'>
+            //       <FacebookMessengerIcon size={32} round={true}/>
+            //     </FacebookShareButton>
+            //   </Grid>
+            //   <Grid item xs={4} style={{ textAlign: 'center' }}>
+            //     <TwitterShareButton url='https://stepup.triller.co'>
+            //       <TwitterIcon size={32} round={true}/>
+            //     </TwitterShareButton>
+            //   </Grid>
+            // </Grid>
+          }
+        </CardContent>
+      </Card>
+      <ModalVideo channel='youtube' youtube={modalOpts} ratio={'16:9'} isOpen={open} videoId={youtubeId} onClose={() => setOpen(false)} />
+    </>
+  )
+}
+      // v = t.get('voted', 'true', { ttl: '24h' })
+
 export default () => {
+  let v = false
+
+  if (typeof window !== 'undefined') {
+    let t = localstory(window.localStorage ?? window.sessionStorage, 'triller')
+
+    if (!id) {
+      id = t.get('id')
+
+      if (!id) {
+        id = nanoid()
+        t.set('id', id, { ttl: '24h' })
+      }
+    }
+
+    picked = t.get('voted')
+    v = !!picked
+  }
+
   const classes = useStyles()
 
   const theme = useTheme()
@@ -439,6 +672,8 @@ export default () => {
   const [openQuavo, setOpenQuavo] = useState(false)
   const [openTakeoff, setOpenTakeoff] = useState(false)
   const [openAmara, setOpenAmara] = useState(false)
+
+  const [voted, setVoted] = useState(v)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openAuditions2, setOpenAuditions2] = useState(isBelowSM)
@@ -463,7 +698,23 @@ export default () => {
   //     setLogoShow(true)
   //   }, 1400)
   // }, [])
-  //
+
+
+  if (typeof window !== 'undefined' && !sharedHandle) {
+    const urlParams = new URLSearchParams(window.location.search);
+    sharedHandle = urlParams.get('vote') ?? ''
+    if(sharedHandle) {
+      setTimeout(() => {
+        Scroll.scroller.scrollTo(sharedHandle, {
+          duration: 1000,
+          delay: 100,
+          smooth: true,
+          offset: -100, // Scrolls to element + 50 pixels down the page
+        })
+      }, 200)
+    }
+  }
+
   const ratio = 812/375
 
   const opts: any = {
@@ -498,16 +749,23 @@ export default () => {
     playsinline: 1,
     rel: 0,
   }
-
   const modalRatio = (typeof window == 'undefined') ? '3:2' : `${window.innerWidth+200}:${window.innerHeight}`
 
   return (
     <div>
+      <Head>
+        <script type="text/javascript" src="//cdn.wishpond.net/connect.js?merchantId=1505757&writeKey=4fc9f3731b69" async />
+      </Head>
+
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
           <div className={classes.stepUpLogo}>
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
+          <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
+          <Typography variant='h3' align='center' className={classes.auditions}>
+            VOTE FOR YOUR FAVORITE ARTIST VIDEOS
+          </Typography>
           {
             // <Fade in={slide1} timeout={800}>
             //   <div>
@@ -529,117 +787,31 @@ export default () => {
             // </Fade>
           }
         </Container>
-        <Container maxWidth='md'>
-          <Grid container alignItems='flex-start' spacing={4}>
-            <Grid item xs={12}>
-              <img className={classes.prizeImg} src={AuditionsClosed} alt='Auditions Closed'/>
-              <Typography variant='h3' align='center' className={classes.auditions}>
-                Top 30 finalist will be announced tomorrow!
-              </Typography>
-              <br/>
-              <br/>
-            </Grid>
-          </Grid>
-        </Container>
         <Container className={classes.judges} maxWidth='lg'>
-          <Grid container alignItems='flex-start' spacing={4} justify='center'>
+
+
+          <Grid container alignItems='flex-start' justify='center' spacing={4}>
+            {
+              voting.map((v) => {
+                return (
+                  <Grid item xs={12} sm={6} md={3} key={v.handle}>
+                    <Scroll.Element name={v.handle}>
+                      <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
+                    </Scroll.Element>
+                  </Grid>
+                )
+              })
+            }
+          </Grid>
+
+          <Grid container alignItems='flex-start' justify='center' spacing={4}>
             <Grid item xs={12}>
-              <div
-                className={classes.intro}
-              >
-                <div style={{ opacity: openIntro || isBelowSM ? 0 : 1 }}>
-                  <img src={IntroVideo} alt='Intro to Triller StepUp' className={classes.introImg} onClick={() => setOpenIntro(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openIntro || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <Vimeo
-                        video='416390093'
-                        showTitle={false}
-                        showPortrait={false}
-                        sidedock={false}
-                        controls={false}
-                        responsive={true}
-                        autoplay={!isBelowSM && openIntro}
-                      />
-                    </div>
-                  )
-                }
-              </div>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography variant='h4' align='center' className={classes.auditions}>
-                WEEK 1 AUDITIONS
+              <br/>
+              <br/>
+              <Typography variant='h3' align='center' className={classes.auditions}>
+                VOTING CLOSES ON 7/2
               </Typography>
-              <br/>
-              <div
-                className={classes.audition}
-              >
-                <div style={{ opacity: openAuditions1 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions1Video} alt='WEEK 1 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions1(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openAuditions1 || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='Ix-6fRRae3g' opts={opts2}/>
-                    </div>
-                  )
-                }
-              </div>
-              <br/>
-              <br/>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography variant='h4' align='center' className={classes.auditions}>
-                WEEK 2 AUDITIONS
-              </Typography>
-              <br/>
-              <div
-                className={classes.audition}
-              >
-                <div style={{ opacity: openAuditions2 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions2Video} alt='WEEK 2 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions2(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openAuditions2 || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='vRAiNE7edjY' opts={opts2}/>
-                    </div>
-                  )
-                }
-              </div>
-              <br/>
-              <br/>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography variant='h4' align='center' className={classes.auditions}>
-                WEEK 3 AUDITIONS
-              </Typography>
-              <br/>
-              <div
-                className={classes.audition}
-              >
-                <div style={{ opacity: openAuditions3 || isBelowSM ? 0 : 1 }}>
-                  <img src={Auditions3Video} alt='WEEK 3 AUDITIONS' className={classes.auditionsImg} onClick={() => setOpenAuditions3(true)}/>
-                  <PlayCircleOutlineIcon className={classes.introPlayIcon}/>
-                </div>
-                {
-                  (openAuditions3 || isBelowSM) &&
-                  (
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
-                      <ReactYouTube className={classes.video} videoId='0OazUXhN-yU' opts={opts2}/>
-                    </div>
-                  )
-                }
-              </div>
-              <br/>
-              <br/>
+              <Countdown target='2020-07-02 12:59:59-04:00'/>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
