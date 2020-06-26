@@ -764,7 +764,7 @@ export default () => {
           </div>
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           <Typography variant='h3' align='center' className={classes.auditions}>
-            VOTE FOR YOUR FAVORITE ARTIST VIDEOS UNTIL 7/2
+            VOTE FOR YOUR FAVORITE ARTIST VIDEOS
           </Typography>
           {
             // <Fade in={slide1} timeout={800}>
@@ -809,7 +809,7 @@ export default () => {
               <br/>
               <br/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                VOTE FOR YOUR FAVORITE ARTIST UNTIL 7/2
+                VOTING CLOSES ON 7/2
               </Typography>
               <Countdown target='2020-07-02 12:59:59-04:00'/>
             </Grid>
