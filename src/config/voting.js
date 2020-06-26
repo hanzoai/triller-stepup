@@ -17,7 +17,7 @@ function shuffle(array) {
   return array;
 }
 
-export default [
+const choices = ([
  {
    "Name": "Ana Karolina Campos Garcia",
    handle: "ms.karoline",
@@ -228,4 +228,6 @@ export default [
    "Video Link": "https://v.triller.co/rQx9V5",
    youtube: "fwkUjTgoT4Q"
  }
-]
+])
+
+export default choices

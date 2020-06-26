@@ -491,8 +491,11 @@ const useStyles = makeStyles((theme) => ({
   },
   votePicked: {
     position: 'absolute',
-    right: theme.spacing(2),
-    top: theme.spacing(2),
+    left: 0,
+    top: 0,
+    textAlign: 'center',
+    width: '100%',
+    backgroundColor: 'rgba(0,0,0,.5)',
   },
 }))
 
@@ -590,7 +593,7 @@ const VoteCard = ({
               <TextField
                 variant='outlined'
                 size='small'
-              value={`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`}
+                value={`${window.location.href.replace(/\?.*/,'')}?vote=${handle}`}
                 fullWidth
                 InputProps={{
                   endAdornment: (
@@ -611,7 +614,14 @@ const VoteCard = ({
             )
           }
           {
-            picked && ( <CheckIcon className={classes.votePicked}/> )
+            picked && (
+              <div>
+                <Typography variant='h6' className={classes.votePicked}>
+                  <strong>YOUR VOTE</strong>
+                  <CheckIcon style={{ transform: 'translate(2px, 4px)' }}/>
+                </Typography>
+              </div>
+            )
           }
           {
             // <br/>
