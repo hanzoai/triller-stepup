@@ -768,10 +768,6 @@ export default () => {
 
   return (
     <div>
-      <Head>
-        <script type="text/javascript" src="//cdn.wishpond.net/connect.js?merchantId=1505757&writeKey=4fc9f3731b69" async />
-      </Head>
-
       <div className={classes.body}>
         <Container className={classes.stepUp} maxWidth='lg'>
           <div className={classes.stepUpLogo}>
@@ -780,6 +776,9 @@ export default () => {
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
           <img className={classes.prizeImg} src={VoteFor} alt='VOTE FOR YOUR FAVORITE ARTIST VIDEOS' style={{marginTop: 8}}/>
           {
+            // <Head>
+            //   <script type="text/javascript" src="//cdn.wishpond.net/connect.js?merchantId=1505757&writeKey=4fc9f3731b69" async />
+            // </Head>
             // <Typography variant='h3' align='center' className={classes.auditions}>
             //   VOTE FOR YOUR FAVORITE ARTIST VIDEOS
             // </Typography>
