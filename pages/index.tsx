@@ -348,21 +348,21 @@ const useStyles = makeStyles((theme) => ({
 
   playable: {
     position: 'relative',
-    pointerEvents: 'none',
-    // cursor: 'pointer',
+    // pointerEvents: 'none',
+    cursor: 'pointer',
   },
 
   playIcon: {
     position: 'absolute',
     top: theme.spacing(1),
     right: theme.spacing(1),
-    display: 'none',
+    // display: 'none',
   },
 
   playable2: {
     transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
-    display: 'none',
+    // display: 'none',
   },
 
   intro: {
@@ -534,7 +534,7 @@ export default () => {
             <Grid item xs={12}>
               <img className={classes.prizeImg} src={AuditionsClosed} alt='Auditions Closed'/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                We are taking a moment to pause on further announcements as we stand in solidarity with the Black community #blacklivesmatter #doitforfloyd
+                Top 30 finalist will be announced tomorrow!
               </Typography>
               <br/>
               <br/>
