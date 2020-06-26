@@ -325,7 +325,7 @@ const useStyles = makeStyles((theme) => ({
   trillerHandle: {
     color: theme.palette.primary.main,
     cursor: 'pointer',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
 
   trillerHandle2: {
@@ -573,9 +573,7 @@ export default () => {
                 <img className={classes.judgeImg} src={JudgeNija} alt='NIJA'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
-              {
-                // <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openNija} videoId='kBQYcmMxXpI' onClose={() => setOpenNija(false)} />
-              }
+              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openNija} videoId='QN5MFuKNnbw' onClose={() => setOpenNija(false)} />
               <br />
               <Typography variant='h4' align='center'>
                 <strong>NIJA</strong>
