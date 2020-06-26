@@ -558,7 +558,7 @@ export default () => {
               <br/>
               <br/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                VOTE FOR YOUR FAVORITE ARTIST 1/DAY UNTIL THE CLOCK RUNS OUT
+                VOTE FOR YOUR FAVORITE ARTIST ONCE A DAY UNTIL THE CLOCK RUNS OUT
               </Typography>
               <Countdown target='2020-07-02 12:59:59-04:00'/>
             </Grid>
@@ -572,7 +572,9 @@ export default () => {
                 <img className={classes.judgeImg} src={JudgeNija} alt='NIJA'/>
                 <PlayCircleOutlineIcon className={classes.playIcon}/>
               </div>
-              <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openNija} videoId='kBQYcmMxXpI' onClose={() => setOpenNija(false)} />
+              {
+                // <ModalVideo channel='youtube' youtube={modalOpts} ratio={modalRatio} isOpen={openNija} videoId='kBQYcmMxXpI' onClose={() => setOpenNija(false)} />
+              }
               <br />
               <Typography variant='h4' align='center'>
                 <strong>NIJA</strong>
