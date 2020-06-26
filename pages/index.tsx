@@ -103,6 +103,7 @@ import {
 } from 'react-share'
 
 let id: string
+let picked: string
 let sharedHandle: string
 
 const useStyles = makeStyles((theme) => ({
@@ -468,6 +469,7 @@ const useStyles = makeStyles((theme) => ({
       border: '1px solid #E81A7B',
     },
     background: 'transparent',
+    position: 'relative',
   },
   voteCardMedia: {
     height: 0,
@@ -487,6 +489,11 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: '8px !important',
     borderColor: '#E81A7B',
   },
+  votePicked: {
+    position: 'absolute',
+    right: theme.spacing(2),
+    top: theme.spacing(2),
+  },
 }))
 
 const VoteCard = ({
@@ -494,12 +501,15 @@ const VoteCard = ({
   setVoted,
   handle,
   youtubeId,
-  highlight
+  highlight,
+  picked,
 }) => {
   const classes = useStyles()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(highlight)
   const [copied, setCopied] = useState(false)
   const theme = useTheme()
+
+  console.log('highlight', handle, highlight, classnames(classes.voteCard,{ [classes.voteHighlight]: highlight }))
 
   const modalOpts = {
     controls: 1,
@@ -601,6 +611,9 @@ const VoteCard = ({
             )
           }
           {
+            picked && ( <CheckIcon className={classes.votePicked}/> )
+          }
+          {
             // <br/>
             // <br/>
             // <Grid container alignItems='center' justify='center'>
@@ -644,7 +657,8 @@ export default () => {
       }
     }
 
-    v = !!t.get('voted')
+    picked = t.get('voted')
+    v = !!picked
   }
 
   const classes = useStyles()
@@ -686,22 +700,20 @@ export default () => {
   // }, [])
 
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search);
-      sharedHandle = urlParams.get('vote') ?? ''
-      if(sharedHandle) {
-        setTimeout(() => {
-          Scroll.scroller.scrollTo(sharedHandle, {
-            duration: 1000,
-            delay: 100,
-            smooth: true,
-            offset: -100, // Scrolls to element + 50 pixels down the page
-          })
-        }, 200)
-      }
+  if (typeof window !== 'undefined' && !sharedHandle) {
+    const urlParams = new URLSearchParams(window.location.search);
+    sharedHandle = urlParams.get('vote') ?? ''
+    if(sharedHandle) {
+      setTimeout(() => {
+        Scroll.scroller.scrollTo(sharedHandle, {
+          duration: 1000,
+          delay: 100,
+          smooth: true,
+          offset: -100, // Scrolls to element + 50 pixels down the page
+        })
+      }, 200)
     }
-  }, [])
+  }
 
   const ratio = 812/375
 
@@ -784,7 +796,7 @@ export default () => {
                 return (
                   <Grid item xs={12} sm={6} md={3} key={v.handle}>
                     <Scroll.Element name={v.handle}>
-                      <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle}/>
+                      <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
                     </Scroll.Element>
                   </Grid>
                 )
@@ -797,7 +809,7 @@ export default () => {
               <br/>
               <br/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                VOTE FOR YOUR FAVORITE ARTIST ONCE A DAY UNTIL THE CLOCK RUNS OUT
+                VOTE FOR YOUR FAVORITE ARTIST UNTIL 7/2
               </Typography>
               <Countdown target='2020-07-02 12:59:59-04:00'/>
             </Grid>

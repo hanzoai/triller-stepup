@@ -1,3 +1,22 @@
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 export default [
  {
    "Name": "Ana Karolina Campos Garcia",
@@ -43,7 +62,7 @@ export default [
  },
  {
    "Name": "Devon Jr. Arnold",
-   handle: "devonarnold1368401155",
+   handle: "devon7arnold",
    "Video ID": 49165450,
    "Video Link": "https://v.triller.co/DOVPgL",
    youtube: "4IZ85Mwqy0U"
@@ -204,7 +223,7 @@ export default [
  },
  {
    "Name": "Jahon Smith",
-   handle: "nohaj.vegas",
+   handle: "realnohajvegas",
    "Video ID": 49753916,
    "Video Link": "https://v.triller.co/rQx9V5",
    youtube: "fwkUjTgoT4Q"
