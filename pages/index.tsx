@@ -1,5 +1,7 @@
 import {
+  Button,
   Card,
+  CardMedia,
   CardContent,
   Container,
   ExpansionPanel,
@@ -9,8 +11,10 @@ import {
   Grid,
   Grow,
   IconButton,
+  InputAdornment,
   Link,
   NoSsr,
+  TextField,
   Typography,
   Slide,
   useMediaQuery,
@@ -80,6 +84,15 @@ import IntroVideo from '../assets/introvideoscreen.jpg'
 import HowToVideo from '../assets/youtubeoverlay.jpg'
 
 import faqConfig from '../src/config/faq'
+
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from 'react-share'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -328,7 +341,6 @@ const useStyles = makeStyles((theme) => ({
   trillerHandle: {
     color: theme.palette.primary.main,
     cursor: 'pointer',
-    pointerEvents: 'none',
   },
 
   trillerHandle2: {
@@ -439,24 +451,105 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   voteCard: {
-    '& img': {
-      width: '100%',
-      display: 'block',
-    }
+    border: '1px solid white',
+    '&:hover': {
+      border: '1px solid #E81A7B',
+    },
+    background: 'transparent',
+  },
+  voteCardMedia: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    position: 'relative',
+    cursor: 'pointer',
+  },
+  voteCardPlayButton: {
+    display: 'block',
+    left: '50%',
+    top: '50%',
+    position: 'absolute',
+    transform: 'translate(-50%, -50%) scale(1.5)',
   }
 }))
 
 const VoteCard = ({
   handle,
   youtubeId,
-  className,
 }) => {
+  const classes = useStyles()
+  const [open, setOpen] = useState(false)
+  const theme = useTheme()
+
+  const modalOpts = {
+    controls: 1,
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+  }
+
   return (
-    <Card className={className}>
-      <CardContent>
-        <img src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} alt={handle}/>
-      </CardContent>
-    </Card>
+    <>
+      <Card className={classes.voteCard}>
+        <CardMedia className={classes.voteCardMedia} image={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} title={handle} onClick={() => setOpen(true)}>
+          <PlayCircleOutlineIcon className={classes.voteCardPlayButton}/>
+        </CardMedia>
+        <CardContent>
+          <Typography variant='body1' align='center' className={classes.trillerHandle2}>
+            <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
+            <br/>
+            <br/>
+          </Typography>
+          <TextField label='Email' variant='outlined' size='small' fullWidth/>
+          <br/>
+          <br/>
+          <Button variant='outlined' fullWidth>
+            VOTE
+          </Button>
+          <br/>
+          <br/>
+          <Typography variant='body2'>
+            Share with you friends:
+          <Typography>
+          <TextField
+            label='Share Link'
+            variant='outlined'
+            size='small'
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label='copy'
+                  >
+
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+
+          <Grid container alignItems='center' justify='center'>
+            <Grid item xs={4} style={{ textAlign: 'center' }}>
+              <FacebookMessengerShareButton url='https://stepup.triller.co' appId='1432768656951037'>
+                <FacebookIcon size={32} round={true}/>
+              </FacebookMessengerShareButton>
+            </Grid>
+            <Grid item xs={4} style={{ textAlign: 'center' }}>
+              <FacebookShareButton url='https://stepup.triller.co'>
+                <FacebookMessengerIcon size={32} round={true}/>
+              </FacebookShareButton>
+            </Grid>
+            <Grid item xs={4} style={{ textAlign: 'center' }}>
+              <TwitterShareButton url='https://stepup.triller.co'>
+                <TwitterIcon size={32} round={true}/>
+              </TwitterShareButton>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+      <ModalVideo channel='youtube' youtube={modalOpts} ratio={'16:9'} isOpen={open} videoId={youtubeId} onClose={() => setOpen(false)} />
+    </>
   )
 }
 
@@ -577,7 +670,7 @@ export default () => {
               voting.map((v) => {
                 return (
                   <Grid item xs={12} sm={6} md={3} key={v.handle}>
-                    <VoteCard handle={v.handle} youtubeId={v.youtube} className={classes.voteCard}/>
+                    <VoteCard handle={v.handle} youtubeId={v.youtube}/>
                   </Grid>
                 )
               })
