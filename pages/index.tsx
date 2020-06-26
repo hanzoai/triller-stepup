@@ -596,7 +596,7 @@ const VoteCard = ({
               )
             }
             <Typography variant='body2'>
-              Share with you friends:
+              Share with your friends:
             </Typography>
             {
               typeof window !== 'undefined' && (
