@@ -474,6 +474,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const VoteCard = ({
+  voted,
+  setVoted,
   handle,
   youtubeId,
 }) => {
@@ -488,6 +490,7 @@ const VoteCard = ({
     playsinline: 1,
     rel: 0,
   }
+  console.log('voted', voted)
 
   return (
     <>
@@ -501,21 +504,33 @@ const VoteCard = ({
             <br/>
             <br/>
           </Typography>
-          <TextField label='Email' variant='outlined' size='small' fullWidth/>
-          <br/>
-          <br/>
-          <Button variant='outlined' fullWidth>
-            VOTE
-          </Button>
-          <br/>
-          <br/>
+          {
+            voted ? (
+                <Typography variant='body1' align='center'>
+                  Thank You For Voting Today
+                  <br/>
+                  <br/>
+                </Typography>
+              ) : (
+                <>
+                  <TextField label='Email' variant='outlined' size='small' fullWidth/>
+                  <br/>
+                  <br/>
+                  <Button variant='outlined' fullWidth onClick={() => setVoted(true)}>
+                    VOTE
+                  </Button>
+                  <br/>
+                  <br/>
+                </>
+              )
+          }
           <Typography variant='body2'>
             Share with you friends:
-          <Typography>
+          </Typography>
           <TextField
-            label='Share Link'
             variant='outlined'
             size='small'
+            value={`https://stepup.triller.co?vote=${handle}`}
             fullWidth
             InputProps={{
               endAdornment: (
@@ -523,12 +538,14 @@ const VoteCard = ({
                   <IconButton
                     aria-label='copy'
                   >
+                    <AssignmentIcon/>
                   </IconButton>
                 </InputAdornment>
               )
             }}
           />
-
+          <br/>
+          <br/>
           <Grid container alignItems='center' justify='center'>
             <Grid item xs={4} style={{ textAlign: 'center' }}>
               <FacebookMessengerShareButton url='https://stepup.triller.co' appId='1432768656951037'>
@@ -565,6 +582,8 @@ export default () => {
   const [openQuavo, setOpenQuavo] = useState(false)
   const [openTakeoff, setOpenTakeoff] = useState(false)
   const [openAmara, setOpenAmara] = useState(false)
+
+  const [voted, setVoted] = useState(false)
 
   const [openAuditions1, setOpenAuditions1] = useState(isBelowSM)
   const [openAuditions2, setOpenAuditions2] = useState(isBelowSM)
@@ -670,7 +689,7 @@ export default () => {
               voting.map((v) => {
                 return (
                   <Grid item xs={12} sm={6} md={3} key={v.handle}>
-                    <VoteCard handle={v.handle} youtubeId={v.youtube}/>
+                    <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted}/>
                   </Grid>
                 )
               })
