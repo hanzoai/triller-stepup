@@ -331,7 +331,7 @@ const useStyles = makeStyles((theme) => ({
   trillerHandle2: {
     color: theme.palette.primary.main,
     cursor: 'pointer',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
 
   trillerIcon: {
@@ -353,21 +353,21 @@ const useStyles = makeStyles((theme) => ({
 
   playable: {
     position: 'relative',
-    pointerEvents: 'none',
-    // cursor: 'pointer',
+    // pointerEvents: 'none',
+    cursor: 'pointer',
   },
 
   playIcon: {
     position: 'absolute',
     top: theme.spacing(1),
     right: theme.spacing(1),
-    display: 'none',
+    // display: 'none',
   },
 
   playable2: {
     transform: 'translateY(.35rem) scale(.8)',
     color: '#FFF',
-    display: 'none',
+    // display: 'none',
   },
 
   intro: {
