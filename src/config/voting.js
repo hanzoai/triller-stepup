@@ -95,11 +95,11 @@ const choices = shuffle([
    youtube: "Hel3p75PHTI"
  },
  {
-   "Name": "Danielle Jacoby",
-   handle: "daniellejacoby",
+   "Name": "Soul Ex",
+   handle: "soulex",
    "Video ID": 48766222,
    "Video Link": "https://v.triller.co/80zOqk",
-   youtube: "fiGl-ZxD4mM"
+   youtube: "ar9Vr4Hq8Ys",
  },
  {
    "Name": "Iris Gabriella Grace Dunn",

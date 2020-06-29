@@ -482,6 +482,7 @@ const useStyles = makeStyles((theme) => ({
   voteCardMedia: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    minHeight: 150,
     position: 'relative',
     cursor: 'pointer',
   },
