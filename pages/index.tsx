@@ -550,7 +550,7 @@ const VoteCard = ({
           </NoSsr>
           <CardContent>
             <Typography variant='body1' align='center' className={classes.trillerHandle2}>
-              <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
+              <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{(handle === 'daniellejacoby') ? 'soulex' : handle}</strong>
               <br/>
               <br/>
             </Typography>
