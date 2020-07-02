@@ -39,6 +39,7 @@ import { nanoid } from 'nanoid'
 
 import classnames from 'classnames'
 import voting from '../src/config/voting'
+import top10voting from '../src/config/voting'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -663,6 +664,44 @@ const VoteCard = ({
     </>
   )
 }
+
+const Top10Card = ({
+  handle,
+  youtubeId,
+  highlight,
+}) => {
+  const classes = useStyles()
+  const imgLink = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+
+  const [open, setOpen] = useState(false)
+
+  const modalOpts = {
+    controls: 1,
+    autoplay: 1,
+    modestbranding: 1,
+    playsinline: 1,
+    rel: 0,
+  }
+
+  return (
+    <>
+      <div className={classes.playable} onClick={() => setOpen(true)}>
+        <img className={classes.judgeImg} src={imgLink} alt={handle}/>
+        <PlayCircleOutlineIcon className={classes.playIcon}/>
+      </div>
+      <ModalVideo channel='youtube' youtube={modalOpts} ratio='16:9' isOpen={open} videoId={youtubeId} onClose={() => setOpen(false)} />
+      <br />
+      <Typography variant='h6' align='center' className={classes.trillerHandle} onClick={() => setOpen(true)}>
+        <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
+        <PlayCircleOutlineIcon className={classes.playable2}/>
+      </Typography>
+      <br />
+      <Typography variant='h6' align='center'>
+        BIO
+      </Typography>
+    </>
+  )
+}
       // v = t.get('voted', 'true', { ttl: '24h' })
 
 export default () => {
@@ -818,13 +857,20 @@ export default () => {
 
           <Grid container alignItems='flex-start' justify='center' spacing={4}>
             {
-              voting.map((v) => {
+              top10voting.map((v) => {
                 return (
-                  <Grid item xs={12} sm={6} md={3} key={v.handle}>
+                  <Grid item xs={12} sm={6} md={3}>
                     <Scroll.Element name={v.handle}>
-                      <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
+                      <Top10Card handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
                     </Scroll.Element>
                   </Grid>
+                  // {
+                  //   // <Grid item xs={12} sm={6} md={3} key={v.handle}>
+                  //   //   <Scroll.Element name={v.handle}>
+                  //   //     <VoteCard handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
+                  //   //   </Scroll.Element>
+                  //   // </Grid>
+                  // }
                 )
               })
             }
@@ -835,9 +881,9 @@ export default () => {
               <br/>
               <br/>
               <Typography variant='h3' align='center' className={classes.auditions}>
-                VOTING CLOSES ON 7/2
+                VOTE FOR NEW AUDITIONS 7/10
               </Typography>
-              <Countdown target='2020-07-02 12:59:59-04:00'/>
+              <Countdown target='2020-07-10 12:59:59-04:00'/>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='h3' align='center' className={classes.auditions}>
