@@ -824,7 +824,9 @@ export default () => {
             <img className={classes.stepUpLogo1} src={StepUpLogo1} alt='StepUp To The Mic!'/>
           </div>
           <img className={classes.prizeImg} src={Prize} alt='Win A Recording Contract'/>
-          <img className={classes.prizeImg} src={VoteFor} alt='VOTE FOR YOUR FAVORITE ARTIST VIDEOS' style={{marginTop: 8}}/>
+          <Typography variant='h3' align='center' className={classes.auditions}>
+            HERE ARE YOUR TOP 10 FINALISTS
+          </Typography>
           {
             // <Head>
             //   <script type="text/javascript" src="//cdn.wishpond.net/connect.js?merchantId=1505757&writeKey=4fc9f3731b69" async />
