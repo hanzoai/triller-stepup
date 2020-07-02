@@ -861,7 +861,7 @@ export default () => {
                 return (
                   <Grid item xs={12} sm={6} md={3}>
                     <Scroll.Element name={v.handle}>
-                      <Top10Card handle={v.handle} youtubeId={v.youtube} voted={voted} setVoted={setVoted} highlight={v.handle===sharedHandle} picked={v.handle===picked}/>
+                      <Top10Card handle={v.handle} youtubeId={v.youtube} highlight={v.handle===sharedHandle}/>
                     </Scroll.Element>
                   </Grid>
                   // {
