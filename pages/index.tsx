@@ -39,7 +39,7 @@ import { nanoid } from 'nanoid'
 
 import classnames from 'classnames'
 import voting from '../src/config/voting'
-import top10voting from '../src/config/voting'
+import top10voting from '../src/config/top10voting'
 
 import Countdown from '../components/Countdown'
 import NewsletterSignUp from '../components/NewsletterSignUp'
@@ -506,6 +506,26 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: 'rgba(0,0,0,.5)',
   },
+  playableTop: {
+    width: '100%',
+    paddingTop: '100%',
+    position: 'relative',
+    borderRadius: '100%',
+    overflow: 'hidden',
+  },
+  topImg: {
+    width: '100%',
+    display: 'block',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  bio: {
+    '& > :first-child': {
+      paddingBottom: theme.spacing(2),
+      fontWeight: 600,
+    }
+  },
 }))
 
 const VoteCard = ({
@@ -666,13 +686,15 @@ const VoteCard = ({
 }
 
 const Top10Card = ({
+  name,
+  location,
   handle,
   youtubeId,
-  highlight,
+  img,
+  bio,
 }) => {
   const classes = useStyles()
   const imgLink = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
-
   const [open, setOpen] = useState(false)
 
   const modalOpts = {
@@ -685,8 +707,8 @@ const Top10Card = ({
 
   return (
     <>
-      <div className={classes.playable} onClick={() => setOpen(true)}>
-        <img className={classes.judgeImg} src={imgLink} alt={handle}/>
+      <div className={classes.playableTop} onClick={() => setOpen(true)}>
+        <img className={classes.topImg} src={img} alt={name}/>
         <PlayCircleOutlineIcon className={classes.playIcon}/>
       </div>
       <ModalVideo channel='youtube' youtube={modalOpts} ratio='16:9' isOpen={open} videoId={youtubeId} onClose={() => setOpen(false)} />
@@ -695,10 +717,16 @@ const Top10Card = ({
         <img src={TrillerIcon} className={classes.trillerIcon} alt='Triller'/><strong>@{handle}</strong>
         <PlayCircleOutlineIcon className={classes.playable2}/>
       </Typography>
-      <br />
       <Typography variant='h6' align='center'>
-        BIO
+        {name}
       </Typography>
+      <Typography variant='body1' align='center'>
+        {location}
+      </Typography>
+      <br />
+      <div className={classes.bio}>
+        {bio}
+      </div>
     </>
   )
 }
@@ -863,7 +891,7 @@ export default () => {
                 return (
                   <Grid item xs={12} sm={6} md={3}>
                     <Scroll.Element name={v.handle}>
-                      <Top10Card handle={v.handle} youtubeId={v.youtube} highlight={v.handle===sharedHandle}/>
+                      <Top10Card name={v.Name} location={v.Location} img={v.img} handle={v.handle} youtubeId={v.youtube} bio={v.bio}/>
                     </Scroll.Element>
                   </Grid>
                   // {
