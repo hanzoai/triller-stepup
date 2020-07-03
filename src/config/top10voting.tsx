@@ -51,7 +51,7 @@ const choices = [
   },
   {
     Name: 'Tyon Davis',
-    Location: 'Fort Pierce, Florida',
+    Location: 'Fort Pierce, FL',
     handle: 't-lyon',
     youtube: 'DAx0zOH53wU',
     img: TLyon,
